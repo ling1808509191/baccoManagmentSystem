@@ -93,6 +93,6 @@
 
   </dependencies>
   <build>
-    <finalName>mark</finalName>
+    <finalName>bacco</finalName>
   </build>
 </project>

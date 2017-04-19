@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="mark:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="mark.war">
+    <root id="archive" name="bacco.war">
       <element id="artifact" artifact-name="mark:war exploded" />
     </root>
   </artifact>

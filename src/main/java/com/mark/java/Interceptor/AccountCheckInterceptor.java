@@ -20,7 +20,7 @@ import java.util.Date;
 public class AccountCheckInterceptor  implements HandlerInterceptor{
     @Autowired
     private AccountServiceImp AccountService;
-    private long ReloginTime=300;
+    private long ReloginTime=12*60*60;
     private long millisecond=1000;
 
     public AccountServiceImp getAccountService() {
