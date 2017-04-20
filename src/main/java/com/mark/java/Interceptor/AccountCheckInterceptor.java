@@ -63,6 +63,9 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         String platform=null;
         long requestTime;
         long currenTime;
+        if("/user/logincheck".equals(httpServletRequest.getServletPath())){
+            return true;
+        }
         try{
             sign=httpServletRequest.getParameter("sign");
             uid=httpServletRequest.getParameter("request_uid");
