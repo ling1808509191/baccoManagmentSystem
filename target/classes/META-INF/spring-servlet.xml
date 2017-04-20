@@ -38,7 +38,7 @@
 	 <mvc:resources location="/img/" mapping="/img/**"/>
 	 <mvc:resources location="/js/" mapping="/js/**"/>
 	<mvc:resources location="/css/" mapping="/css/**"/>
-	<mvc:resources location="/pages/" mapping="/pages/*.html"/>
+	<mvc:resources location="/pages/" mapping="/pages/**"/>
   <context:component-scan base-package="com.mark.java.*">
   
  </context:component-scan>
