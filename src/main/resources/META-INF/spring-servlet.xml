@@ -29,7 +29,6 @@
 			<mvc:mapping path="/user/**" />
 			<mvc:mapping path="/Admin/**" />
 			<!-- 需排除拦截的地址 -->
-			<mvc:exclude-mapping path="/user/logincheck"/>
 			<mvc:exclude-mapping path="/test/**" />
 			<bean class="com.mark.java.Interceptor.AccountCheckInterceptor" />
 		</mvc:interceptor>

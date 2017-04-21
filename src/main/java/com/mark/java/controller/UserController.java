@@ -188,7 +188,6 @@ public class UserController {
     public resultBean delCases(@RequestBody delCasesListBean delCasesListBean, @RequestParam int uid){
         return mCaseServiceImp.delCases(delCasesListBean.getCaseList(),uid);
     }
-
     @RequestMapping("/logincheck")
     @ResponseBody
     public resultBean logincheck(@RequestParam String from_platform,@RequestBody Map map){
