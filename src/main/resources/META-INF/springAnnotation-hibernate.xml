@@ -9,7 +9,7 @@
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/bacco?useUnicode=true&amp;characterEncoding=utf-8"/>
 		<property name="username" value="root" />
-		<property name="password" value="ling7758258" />
+		<property name="password" value="bacco123" />
 	</bean>
 
 	<bean id="sessionFactory"
