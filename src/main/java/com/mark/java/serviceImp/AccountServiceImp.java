@@ -108,10 +108,12 @@ public class AccountServiceImp implements AccountService {
         if(account.getPassword().equals(password)){
             String token= staticToll.CreateToken(account.getUid(),account.getPassword());
        if(platform!=null&&platform.equals("app")){
-       account.setApp_token(token);
+           resultBean.setSucess(1);
+              account.setApp_token(token);
            resultBean.setMessage("login sucess");
            resultBean.getData().add(account);
        }else if(platform!=null&&platform.equals("web")){
+           resultBean.setSucess(1);
            account.setWeb_token(token);
            resultBean.setMessage("login sucess");
            resultBean.getData().add(account);

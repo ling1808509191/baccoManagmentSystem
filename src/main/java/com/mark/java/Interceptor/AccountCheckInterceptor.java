@@ -4,6 +4,7 @@ import com.mark.java.dataBean.resultBean;
 import com.mark.java.entity.Account;
 import com.mark.java.serviceImp.AccountServiceImp;
 import com.mark.java.staticTool.staticToll;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,7 +64,13 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         String platform=null;
         long requestTime;
         long currenTime;
+        System.out.println("uri : "+httpServletRequest.getServletPath());
+        System.out.println(httpServletRequest.getContentType());
+
         if("/user/logincheck".equals(httpServletRequest.getServletPath())){
+            System.out.println("get /user/logincheck");
+            System.out.println(httpServletRequest.getContentType());
+
             return true;
         }
         try{
