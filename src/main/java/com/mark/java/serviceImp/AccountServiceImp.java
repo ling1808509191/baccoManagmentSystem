@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -157,7 +158,7 @@ public class AccountServiceImp implements AccountService {
     }
 
     public resultBean getAllAccount(int pagenum, int pagesize) {
-        List<Account> resultList =null;
+        HashMap<String,Object> resultList =null;
         resultBean resultBean=new resultBean();
         resultList= AccountDAOImp.findAccounts(pagenum,pagesize);
         resultBean.setSucess(1);

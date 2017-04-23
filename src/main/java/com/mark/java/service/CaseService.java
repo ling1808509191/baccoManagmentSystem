@@ -11,7 +11,7 @@ import java.util.List;
 public interface CaseService {
     public resultBean casesUpload(upLoadPicBean upLoadPicBean);
     public resultBean delCases(List<String> casesList,Integer uid);
-    public resultBean getUserCasesList(Integer uid);
+    public resultBean getUserCasesList(Integer uid,int pagenum,int pagesize);
     public resultBean getTobaccoListByCaseId(String caseNum);
     public resultBean get(Integer uid);
 }

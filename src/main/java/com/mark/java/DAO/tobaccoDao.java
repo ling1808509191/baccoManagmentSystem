@@ -2,6 +2,7 @@ package com.mark.java.DAO;
 import com.mark.java.entity.staffInfo;
 import com.mark.java.entity.tobacco;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface tobaccoDao {
     public int save(tobacco tobacco);
-    public List<tobacco> findTobacco(int pagenum, int pagesize);
+    public HashMap<String,Object> findTobacco(int pagenum, int pagesize);
     public List<tobacco> getTobaccosListByCaseNum(String num);
     public boolean editTobacco(tobacco tobacco);
     public tobacco getTobaccoById(int id);

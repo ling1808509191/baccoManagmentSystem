@@ -2,6 +2,7 @@ package com.mark.java.DAO;
 import com.mark.java.entity.notificaCategory;
 import com.mark.java.entity.notification;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface notifiCateDao {
     public int save(notificaCategory notifi);
-    public List<notificaCategory> findNotificaCategory(int pagenum, int pagesize);
+    public HashMap<String,Object> findNotificaCategory(int pagenum, int pagesize);
     public List<notificaCategory> findNotificaCategory();
     public notificaCategory getNotificaCategoryById(int id);
     public notificaCategory getNotificaCategoryByName(String  name);

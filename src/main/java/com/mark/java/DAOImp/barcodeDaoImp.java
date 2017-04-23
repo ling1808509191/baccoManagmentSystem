@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -40,14 +41,18 @@ public class barcodeDaoImp implements barcodeDao {
         this.tableName = tableName;
     }
 
-    public List<barcode> findBarcode(int pagenum, int pagesize) {
+    public HashMap<String,Object> findBarcode(int pagenum, int pagesize) {
         String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<barcode> result=null;
         result= query.list();
-        return result;
+        resultMap.put("barcodeList",result);
+        return resultMap;
     }
 
     public barcode getBarcodeById(int id) {

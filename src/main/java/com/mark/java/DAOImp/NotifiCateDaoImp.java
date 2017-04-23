@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,14 +35,17 @@ public class NotifiCateDaoImp implements notifiCateDao {
         return (Integer) sessionFactory.getCurrentSession().save(notificaCategory);
     }
 
-    public List<notificaCategory> findNotificaCategory(int pagenum, int pagesize) {
+    public HashMap<String, Object> findNotificaCategory(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        resultMap.put("totalNum",((Integer)query.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<notificaCategory> result=null;
         result= query.list();
-        return result;
+        resultMap.put("categoryList",result);
+        return resultMap;
     }
 
     public List<notificaCategory> findNotificaCategory() {

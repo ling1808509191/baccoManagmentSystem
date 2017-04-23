@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,14 +36,18 @@ public class NotificationDaoImp implements notificationDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<notification> findNotification(int pagenum, int pagesize) {
+    public HashMap<String, Object> findNotification(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<notification> result=null;
         result= query.list();
-        return result;
+        resultMap.put("notificationList",result);
+        return resultMap;
     }
 //    ALTER TABLE caseInfo
 //    ADD CONSTRAINT `FK_DepartmentReference_2`
@@ -51,12 +56,17 @@ public class NotificationDaoImp implements notificationDao {
 //    ON DELETE CASCADE
 //    ON UPDATE RESTRICT;
 //    ALTER TABLE caseInfo DROP FOREIGN KEY `FK_oxk7bnk7ln5dnpwpb8vrl7o3a` ;
-    public List<notification> findNotificationByCategoryId(int categoryId, int pagenum, int pagesize) {
+    public HashMap<String, Object> findNotificationByCategoryId(int categoryId, int pagenum, int pagesize) {
         String hql=" from "+tableName+" a where a.mCategory.id = ?";
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        Countquery.setInteger(0,categoryId);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setInteger(0,categoryId);
         query.setFirstResult((pagenum-1)*pagesize);
-        return query.list();
+        resultMap.put("notificationList",query.list());
+        return resultMap;
     }
 
     public notification getNotificationById(int id) {

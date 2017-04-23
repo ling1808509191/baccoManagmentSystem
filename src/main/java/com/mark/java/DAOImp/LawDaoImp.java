@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,14 +35,18 @@ public class LawDaoImp implements LawDao {
         return (Integer) sessionFactory.getCurrentSession().save(Law);
     }
 
-    public List<Law> findLaw(int pagenum, int pagesize) {
+    public HashMap<String,Object> findLaw(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<Law> result=null;
         result= query.list();
-        return result;
+        resultMap.put("lawList",result);
+        return resultMap;
     }
 
     public Law getLawById(int id) {
@@ -58,13 +63,16 @@ public class LawDaoImp implements LawDao {
         return false;
     }
 
-    public List<Law> getPublishedLaw(int pagenum, int pagesize) {
-        String hql=" from "+tableName+" a where a.status = ? ";
+    public HashMap<String,Object> getPublishedLaw(int pagenum, int pagesize) {
+        String hql=" from "+tableName+" a where a.status = 1 ";
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
-        query.setInteger(0,1);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
-        return  query.list();
+        resultMap.put("lawList",query.list());
+        return  resultMap;
     }
 
     public List<Law> getLawByCategoryId(int categoryId) {

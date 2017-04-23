@@ -72,9 +72,9 @@ public class LawServiceImp implements LawService{
         }
     }
 
-    public resultBean getLawCategoryList() {
+    public resultBean getLawCategoryList(int pagenum,int pagesize) {
         resultBean resultBean=new resultBean();
-         resultBean.getData().add(LawCategoryDaoImp.findLawCategory(1,1000));
+         resultBean.getData().add(LawCategoryDaoImp.findLawCategory(pagenum,pagesize));
         resultBean.setSucess(1);
         resultBean.setMessage("get law category list sucess");
         return resultBean;

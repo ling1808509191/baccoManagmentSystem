@@ -5,6 +5,7 @@ package com.mark.java.DAO;
 
 import com.mark.java.entity.barcode;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface barcodeDao {
     public int save(barcode account);
-    public List<barcode> findBarcode(int pagenum, int pagesize);
+    public HashMap<String,Object> findBarcode(int pagenum, int pagesize);
     public barcode getBarcodeById(int id);
     public barcode getBarcodeByCodeNum(String barcodeNum);
     public boolean editBarcode(barcode barcode);

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,14 +34,18 @@ public class LawCategoryDaoImp implements LawCategoryDao {
         return (Integer) sessionFactory.getCurrentSession().save(LawCategory);
     }
 
-    public List<LawCategory> findLawCategory(int pagenum, int pagesize) {
+    public HashMap<String,Object> findLawCategory(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<LawCategory> result=null;
         result= query.list();
-        return result;
+        resultMap.put("LawCategoryList",result);
+        return resultMap;
     }
 
     public LawCategory getLawCategoryByName(String name) {

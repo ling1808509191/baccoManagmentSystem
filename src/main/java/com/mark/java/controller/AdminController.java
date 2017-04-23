@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -261,9 +262,9 @@ public class AdminController {
     }
     @RequestMapping("/getCategoryList")
     @ResponseBody
-    public resultBean getCategoryList(){
+    public resultBean getCategoryList(@RequestParam int pagenum,@RequestParam int pagesize){
 
-        return LawServiceImp.getLawCategoryList();
+        return LawServiceImp.getLawCategoryList(pagenum,pagesize);
     }
     @RequestMapping("/addLawInstrument")
     @ResponseBody
@@ -436,7 +437,7 @@ public class AdminController {
 
         resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications(uid,pagenum,pagesize);
        if(resultBean.getSucess()==1){
-           List<notificationUser> List=(List)resultBean.getData().get(0);
+           List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
            if(List!=null&&List.size()!=0){
                for(int i=0;i<List.size();i++){
                    List.get(i).setmUser(null);

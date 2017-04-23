@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -56,7 +57,7 @@ public class DepartmentServiceImp implements departmentService {
 
     public resultBean getAllDepartments(int pagenum, int pagesize) {
         resultBean resultBean=new resultBean();
-        List<department> resultList=departmentDaoImp.findDepartment(pagenum,pagesize);
+        HashMap<String,Object> resultList=departmentDaoImp.findDepartment(pagenum,pagesize);
         resultBean.setSucess(1);
         resultBean.setMessage("search sucess");
         resultBean.getData().add(resultList);

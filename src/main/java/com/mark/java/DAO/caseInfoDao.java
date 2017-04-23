@@ -7,6 +7,7 @@ package com.mark.java.DAO;
 
 import com.mark.java.entity.caseInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,9 +15,9 @@ import java.util.List;
  */
 public interface caseInfoDao {
     public int save(caseInfo account);
-    public List<caseInfo> findCaseInfo(int pagenum, int pagesize);
+    public HashMap<String,Object> findCaseInfo(int pagenum, int pagesize);
     public boolean editCaseInfo(caseInfo caseInfo);
-    public List<caseInfo>  getUserCaseInfos(int uid );
+    public  HashMap<String,Object>  getUserCaseInfos(int uid ,int pagenum,int pagesize);
     public caseInfo getCaseInfoById(int id);
     public caseInfo getCaseInfoByCaseNum(String CaseNum);
     public boolean delCaseInfo(caseInfo caseInfo);

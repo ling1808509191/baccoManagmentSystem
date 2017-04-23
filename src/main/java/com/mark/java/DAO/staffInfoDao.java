@@ -2,6 +2,7 @@ package com.mark.java.DAO;
 import com.mark.java.entity.notificationUser;
 import com.mark.java.entity.staffInfo;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface staffInfoDao {
     public int save(staffInfo staffInfo);
-    public List<staffInfo> findStaffInfo(int pagenum, int pagesize);
+    public HashMap<String,Object> findStaffInfo(int pagenum, int pagesize);
     public boolean editStaffInfo(staffInfo staffInfo);
     public staffInfo getStaffInfoById(int id);
     public staffInfo getStaffInfoByAccountId(int id);

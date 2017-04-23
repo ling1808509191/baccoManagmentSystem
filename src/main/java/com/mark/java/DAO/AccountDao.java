@@ -4,6 +4,7 @@ import com.mark.java.Exceptions.MutilBeanException;
 import com.mark.java.entity.Account;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +13,8 @@ import java.util.List;
 public interface AccountDao {
     public int save(Account account);
     public Account getAccountByName (String username)throws MutilBeanException;
-    public List<Account> findAccounts(int pagenum,int pagesize);
+    public int getAccountTotalNum ();
+    public HashMap<String,Object> findAccounts(int pagenum, int pagesize);
     public List<Account> getAccountByDepartmentId(int departmentId);
     public Account getAccountById(int id);
     public  List<Account> searchAccountbyDepartmentId(String username,Boolean is_admin,Integer status,String name,String phone,Integer departmentId);

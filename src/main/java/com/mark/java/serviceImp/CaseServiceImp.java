@@ -197,11 +197,11 @@ public class CaseServiceImp implements CaseService {
         return resultBean;
     }
 
-    public resultBean getUserCasesList(Integer uid){
+    public resultBean getUserCasesList(Integer uid,int pagenum,int pagesize){
         resultBean resultBean=new resultBean();
         resultBean.setSucess(1);
         resultBean.setMessage("get case list sucess");
-        resultBean.getData().add(CaseInfoDAOImp.getUserCaseInfos(uid));
+        resultBean.getData().add(CaseInfoDAOImp.getUserCaseInfos(uid,pagenum,pagesize));
         return resultBean;
     }
 

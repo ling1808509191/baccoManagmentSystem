@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -303,7 +304,7 @@ public class NotificationServiceImp implements NotificationService {
     }
 
     public resultBean getTypeNotifications(int NotifyCategoryId, int pagenum, int pagesize) {
-        List<notification> notificationList=mNotificationDaoImp.findNotificationByCategoryId(NotifyCategoryId,pagenum,pagesize);
+        HashMap<String,Object> notificationList=mNotificationDaoImp.findNotificationByCategoryId(NotifyCategoryId,pagenum,pagesize);
         resultBean resultBean=new resultBean();
         resultBean.setSucess(1);
             resultBean.setMessage("this search notification by categoryId sucess ");
@@ -338,7 +339,7 @@ public class NotificationServiceImp implements NotificationService {
 
     public resultBean getUserTypeNotifications(int uid, int pagenum, int pagesize) {
         resultBean resultBean=new resultBean();
-        List<notificationUser> resultList=mNotifiUserDaoImp.getUserNotifications(uid,pagenum,pagesize);
+        HashMap<String,Object> resultList=mNotifiUserDaoImp.getUserNotifications(uid,pagenum,pagesize);
         if(resultList==null){
             resultBean.setSucess(0);
             resultBean.setMessage("get notifications by userid faild");

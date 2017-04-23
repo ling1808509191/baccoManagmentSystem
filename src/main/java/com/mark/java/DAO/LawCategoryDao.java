@@ -7,6 +7,7 @@ package com.mark.java.DAO;
 
 import com.mark.java.entity.LawCategory;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface LawCategoryDao {
     public int save(LawCategory LawCategory);
-    public List<LawCategory> findLawCategory(int pagenum, int pagesize);
+    public HashMap<String,Object> findLawCategory(int pagenum, int pagesize);
     public LawCategory getLawCategoryByName(String name);
     public boolean editLawCategory(LawCategory LawCategory);
     public LawCategory getLawCategoryById(int id);

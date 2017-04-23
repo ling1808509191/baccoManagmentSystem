@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,14 +36,18 @@ public class NotifiUserDaoImp implements notifyUserDao {
         return (Integer) sessionFactory.getCurrentSession().save(notificationUser);
     }
 
-    public List<notificationUser> findNotifyUser(int pagenum, int pagesize) {
+    public HashMap<String, Object> findNotifyUser(int pagenum, int pagesize) {
        String hql="from "+tableName;
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<notificationUser> result=null;
         result= query.list();
-        return result;
+        resultMap.put("resultList",result);
+        return resultMap;
     }
 
     public notificationUser getNotifyUserById(int id) {
@@ -64,17 +69,18 @@ public class NotifiUserDaoImp implements notifyUserDao {
         return result.get(0);
     }
 
-    public List<notificationUser> getUserNotifications(int uid, int pagenum, int pagesize) {
+    public HashMap<String, Object> getUserNotifications(int uid, int pagenum, int pagesize) {
         String hql="from "+tableName+" a where a.mUser.uid = ? ";
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        Countquery.setInteger(0,uid);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setInteger(0,uid);
-
         List<notificationUser> result=null;
         result= query.list();
-        if(result==null){
-            return null;
-        }
-        return result;
+        resultMap.put("notificationList",result);
+        return resultMap;
     }
 
     public boolean editNotifyUser(notificationUser notificationUser) {

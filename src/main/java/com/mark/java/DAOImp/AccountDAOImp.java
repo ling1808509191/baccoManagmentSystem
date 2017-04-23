@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -62,14 +63,23 @@ public class AccountDAOImp implements AccountDao {
         return null;
     }
 
-    public List<Account> findAccounts(int pagenum, int pagesize) {
+    public int getAccountTotalNum() {
+        return 0;
+    }
+
+    public HashMap<String,Object> findAccounts(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<Account> result=null;
         result= query.list();
-        return result;
+        resultMap.put("AccountList",result);
+
+        return resultMap;
     }
 
     public List<Account> getAccountByDepartmentId(int departmentId) {

@@ -3,12 +3,14 @@ package com.mark.java.DAOImp;
 import com.mark.java.DAO.departmentDao;
 import com.mark.java.DAO.departmentDao;
 import com.mark.java.entity.department;
+import com.sun.corba.se.spi.ior.ObjectKey;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,14 +36,18 @@ public class DepartmentDaoImp implements departmentDao {
         return (Integer) sessionFactory.getCurrentSession().save(department);
     }
 
-    public List<department> findDepartment(int pagenum, int pagesize) {
+    public HashMap<String,Object> findDepartment(int pagenum, int pagesize) {
        String hql="from "+tableName;
+        HashMap<String,Object> resultMap =new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<department> result=null;
         result= query.list();
-        return result;
+        resultMap.put("departmentList",result);
+        return resultMap;
     }
 
     public List<department> findDepartment() {
@@ -49,6 +55,10 @@ public class DepartmentDaoImp implements departmentDao {
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
         List<department> result=query.list();
         return result;
+    }
+
+    public int getDepartmentTotalNum() {
+        return 0;
     }
 
     public department getDepartmentById(int id) {

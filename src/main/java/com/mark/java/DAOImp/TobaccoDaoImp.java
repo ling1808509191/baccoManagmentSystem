@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,14 +35,18 @@ public class TobaccoDaoImp implements tobaccoDao {
         return (Integer) sessionFactory.getCurrentSession().save(tobacco);
     }
 
-    public List<tobacco> findTobacco(int pagenum, int pagesize) {
+    public HashMap<String,Object> findTobacco(int pagenum, int pagesize) {
        String hql="from "+tableName;
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<tobacco> result=null;
         result= query.list();
-        return result;
+        resultMap.put("tobaccoList",result);
+        return resultMap;
     }
 
     public List<tobacco> getTobaccosListByCaseNum(String num) {

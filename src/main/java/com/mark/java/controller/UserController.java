@@ -27,10 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vcc on 2017/3/27.
@@ -147,12 +144,12 @@ public class UserController {
     }
     @RequestMapping("/getUsersCaseList")
     @ResponseBody
-    public resultBean getUsersCaseList(@RequestParam Integer uid){
+    public resultBean getUsersCaseList(@RequestParam Integer uid,@RequestParam int pagenum,@RequestParam int pagesize){
 
-        resultBean resultBean= mCaseServiceImp.getUserCasesList(uid);
+        resultBean resultBean= mCaseServiceImp.getUserCasesList(uid,pagenum,pagesize);
         List<caseInfo> list=null;
         if(resultBean.getData().size()!=0){
-            list=(List<caseInfo>) resultBean.getData().get(0);
+            list=(List)((HashMap<String,Object>) resultBean.getData().get(0)).get("caseList");
         }
 
         if(list!=null&&list.size()!=0)

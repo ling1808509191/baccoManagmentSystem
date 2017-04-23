@@ -8,7 +8,7 @@ import com.mark.java.dataBean.resultBean;
 public interface LawService {
     public resultBean addLawCategory(String lawCategory);
     public resultBean delLawCategory(int categoryId);
-    public resultBean getLawCategoryList();
+    public resultBean getLawCategoryList(int pagenum,int pagesize);
     public resultBean getLawById(int lawid);
     public resultBean addLegalInstrument(int categoryId, String title, String content, int status);
     public resultBean editLegalInstrument(int legalInstrumentId, String title, String content);

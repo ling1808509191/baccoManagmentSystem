@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,14 +36,18 @@ public class CaseInfoDAOImp implements caseInfoDao {
 
 
 
-    public List<caseInfo> findCaseInfo(int pagenum, int pagesize) {
+    public HashMap<String,Object> findCaseInfo(int pagenum, int pagesize) {
        String hql="from "+tableName;
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<caseInfo> result=null;
         result= query.list();
-        return result;
+        resultMap.put("casesList",result);
+        return resultMap;
     }
 
     public caseInfo getCaseInfoById(int id) {
@@ -72,12 +77,16 @@ public class CaseInfoDAOImp implements caseInfoDao {
         return false;
     }
 
-    public List<caseInfo>  getUserCaseInfos(int uid) {
+    public  HashMap<String,Object> getUserCaseInfos(int uid,int pagenum,int pagesize) {
         String hql="from "+tableName+" a where a.Account.uid = ?";
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query Countquery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
+        Countquery.setInteger(0,uid);
+        resultMap.put("totalNum",((Long)Countquery.uniqueResult()).intValue());
         query.setInteger(0,uid);
-        List<caseInfo> result=null;
-       return  query.list();
+        resultMap.put("caseList",query.list());
+       return  resultMap;
     }
 
 
