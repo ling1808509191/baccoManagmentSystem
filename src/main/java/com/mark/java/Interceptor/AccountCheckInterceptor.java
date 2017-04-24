@@ -135,6 +135,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         System.out.println("befor md5 string : "+signString);
         System.out.println("md5 string : "+md5String);
         if(md5String.equals(sign)){
+            httpServletRequest.setAttribute("uid",account.getUid());
         return true;
         }else{
 

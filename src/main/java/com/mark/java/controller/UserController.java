@@ -87,7 +87,7 @@ public class UserController {
 
     @RequestMapping("/editAccount")
     @ResponseBody
-    public resultBean editAccount(@RequestParam int uid,@RequestBody Map map){
+    public resultBean editAccount(HttpServletRequest httpServletRequest,@RequestBody Map map){
         String name=null;
         String phone=null;
         String email=null;
@@ -123,7 +123,7 @@ public class UserController {
         catch (Exception e){
             identityNum=null;
         }
-        return AccountService.editAccountInfo(uid, name,phone,
+        return AccountService.editAccountInfo((Integer)httpServletRequest.getAttribute("uid"), name,phone,
                 email,departmentId, identityNum);
     }
 
@@ -152,9 +152,9 @@ public class UserController {
     }
     @RequestMapping("/getUsersCaseList")
     @ResponseBody
-    public resultBean getUsersCaseList(@RequestParam Integer uid,@RequestParam int pagenum,@RequestParam int pagesize){
+    public resultBean getUsersCaseList(HttpServletRequest httpServletRequest,@RequestParam int pagenum,@RequestParam int pagesize){
 
-        resultBean resultBean= mCaseServiceImp.getUserCasesList(uid,pagenum,pagesize);
+        resultBean resultBean= mCaseServiceImp.getUserCasesList((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
         List<caseInfo> list=null;
         if(resultBean.getData().size()!=0){
             list=(List)((HashMap<String,Object>) resultBean.getData().get(0)).get("caseList");
@@ -195,15 +195,15 @@ public class UserController {
     }
     @RequestMapping("/getAllLawInstrument")
     @ResponseBody
-    public resultBean getAllLawInstrument(@RequestParam int pagenum,@RequestParam int uid,@RequestParam int pagesize,@RequestBody Map map){
+    public resultBean getAllLawInstrument(@RequestParam int pagenum,HttpServletRequest httpServletRequest,@RequestParam int pagesize,@RequestBody Map map){
 
-        return LawServiceImp.getAllLegalInstrument(uid,pagenum,pagesize);
+        return LawServiceImp.getAllLegalInstrument((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
     }
     @RequestMapping("/UserGetNotifications")
     @ResponseBody
-    public resultBean UserGetNotifications(@RequestParam  int uid,@RequestParam int pagenum,@RequestParam int pagesize){
+    public resultBean UserGetNotifications(HttpServletRequest httpServletRequest,@RequestParam int pagenum,@RequestParam int pagesize){
 
-        resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications(uid,pagenum,pagesize);
+        resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
         if(resultBean.getSuccess()==1){
             List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
             if(List!=null&&List.size()!=0){
