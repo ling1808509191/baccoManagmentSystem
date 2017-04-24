@@ -50,9 +50,9 @@ public class testController {
     }
     @RequestMapping("/Md5")
     @ResponseBody
-    public String test2(@RequestParam String md5){
+    public String test2(@RequestBody Map file){
 
-        return staticToll.md5Password(md5);
+        return staticToll.md5Password((String)file.get("md5string"));
     }
     @RequestMapping("/file")
     @ResponseBody

@@ -39,7 +39,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         PrintWriter out = null;
         try {
             out = response.getWriter();
-            if(message!=null){
+            if(message==null){
                 out.append("{ \"message\":\"身份认证失败\"}");
             }else{
                 out.append(message);
@@ -89,12 +89,9 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
 
         System.out.println("current time : "+currenTime);
 
-        if(currenTime-requestTime<0||currenTime-requestTime>(ReloginTime*millisecond)){
-            ReturnErrorMessage(httpServletResponse,null);
-            return false;
-        }
+
         String URI=httpServletRequest.getServletPath();
-        String token=null;
+        String tokenAndLoginTime=null;
         System.out.println("getRequestURI =: "+URI);
         resultBean resultBean=AccountService.getAccountById(Integer.valueOf(uid));
         Account account=null;
@@ -108,13 +105,28 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             ReturnErrorMessage(httpServletResponse,null);
             return false;
         }
+
         if(platform.equals("app")){
-            token=account.getApp_token();
+            tokenAndLoginTime=account.getApp_token();
         }else if(platform.equals("web")){
-            token=account.getWeb_token();
+            tokenAndLoginTime=account.getWeb_token();
         }
-        if(token==null){
+        if(tokenAndLoginTime==null){
             ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为空\"}");
+            return false;
+        }
+        String token=null;
+        long loginTime=-1;
+        if(tokenAndLoginTime!=null&&!tokenAndLoginTime.equals("")&&tokenAndLoginTime.contains(";")){
+            token=tokenAndLoginTime.split(";")[0];
+            loginTime=Long.valueOf(tokenAndLoginTime.split(";")[1]);
+        }else{
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为错误\"}");
+        }
+        System.out.println("loginTime :　"+loginTime);
+        System.out.println("currentTime : "+currenTime);
+        if(loginTime==-1||currenTime-loginTime<0||currenTime-loginTime>(ReloginTime*millisecond)){
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"登陆时间超出或错误\"}");
             return false;
         }
         String signString=URI+"?token="+token+"&time="+time;
@@ -125,7 +137,8 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         if(md5String.equals(sign)){
         return true;
         }else{
-            ReturnErrorMessage(httpServletResponse,null);
+
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"sign值错误，需要计算的md5字符串为 : "+signString+" ,计算后的值为 : "+md5String+"\"}");
             return false;
         }
 

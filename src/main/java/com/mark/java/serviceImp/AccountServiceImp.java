@@ -43,7 +43,7 @@ public class AccountServiceImp implements AccountService {
             account= AccountDAOImp.getAccountByName(username);
         }
         catch (MutilBeanException e){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this username is exited");
             return resultBean;
         }
@@ -54,7 +54,7 @@ public class AccountServiceImp implements AccountService {
             department=departmentDaoImp.getDepartmentById(departmentId);
             if(department==null){
                 resultBean.setMessage("wrong department");
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 return  resultBean;
             }
             account.setIs_admin(isAdmin);
@@ -69,19 +69,19 @@ public class AccountServiceImp implements AccountService {
             account.setStaffInfo(staffinfo);
             int AccountId= AccountDAOImp.save(account);
             if(AccountId>0){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("创建用户成功");
                 resultBean.getData().add(AccountDAOImp.getAccountById(AccountId));
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("创建用户失败");
                 return resultBean;
             }
         }
         else{
             resultBean.setMessage("用户名已存在");
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             return  resultBean;
         }
     }
@@ -90,41 +90,41 @@ public class AccountServiceImp implements AccountService {
        Account account=null;
         resultBean resultBean=new resultBean();
         if(username==null||password==null||password==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("Required parameter missing");
             return resultBean;
         }
         try{
             account= AccountDAOImp.getAccountByName(username);
         }catch (MutilBeanException e){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("where is some unknown error");
             return resultBean;
         }
         if(account==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("username is not exited");
             return resultBean;
         }
         if(account.getPassword().equals(password)){
             String token= staticToll.CreateToken(account.getUid(),account.getPassword());
        if(platform!=null&&platform.equals("app")){
-           resultBean.setSucess(1);
-              account.setApp_token(token);
+           resultBean.setSuccess(1);
+              account.setApp_token(token+";"+System.currentTimeMillis());
            resultBean.setMessage("login sucess");
            resultBean.getData().add(account);
        }else if(platform!=null&&platform.equals("web")){
-           resultBean.setSucess(1);
-           account.setWeb_token(token);
+           resultBean.setSuccess(1);
+           account.setWeb_token(token+";"+System.currentTimeMillis());
            resultBean.setMessage("login sucess");
            resultBean.getData().add(account);
        }else{
-           resultBean.setSucess(0);
+           resultBean.setSuccess(0);
            resultBean.setMessage("can not get platform param");
 
        }
         }else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("Password error");
         }
         return resultBean;
@@ -139,7 +139,7 @@ public class AccountServiceImp implements AccountService {
         List<Account> resultList =null;
         resultBean resultBean=new resultBean();
         resultList= AccountDAOImp.searchAccountbyDepartmentId(username,isAdmin,status,name,phone,departmentId);
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("search sucess");
         resultBean.getData().add(resultList);
 
@@ -150,7 +150,7 @@ public class AccountServiceImp implements AccountService {
         List<Account> resultList =null;
         resultBean resultBean=new resultBean();
         resultList= AccountDAOImp.searchAccount(username,isAdmin,status,name,phone);
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("search sucess");
         resultBean.getData().add(resultList);
 
@@ -161,7 +161,7 @@ public class AccountServiceImp implements AccountService {
         HashMap<String,Object> resultList =null;
         resultBean resultBean=new resultBean();
         resultList= AccountDAOImp.findAccounts(pagenum,pagesize);
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("search sucess");
         resultBean.getData().add(resultList);
 
@@ -172,11 +172,11 @@ public class AccountServiceImp implements AccountService {
         resultBean resultBean=new resultBean();
         Account account= AccountDAOImp.getAccountById(AccountId);
         if(account==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("not found this Account");
             return  resultBean;
         }else{
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("found this Account");
             resultBean.getData().add(account);
             return  resultBean;
@@ -189,18 +189,18 @@ public class AccountServiceImp implements AccountService {
         resultBean resultBean=new resultBean();
 
         if(account==null){
-        resultBean.setSucess(0);
+        resultBean.setSuccess(0);
             resultBean.setMessage("not found this Account");
             return  resultBean;
         }
         account.setStatus(status);
         if(AccountDAOImp.editAccount(account)){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("update Account sucess");
             return resultBean;
         }
         else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("update Account faild");
             return resultBean;
         }
@@ -212,7 +212,7 @@ public class AccountServiceImp implements AccountService {
         resultBean resultBean=new resultBean();
 
         if(account==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("not found this Account");
             return  resultBean;
         }
@@ -233,7 +233,7 @@ public class AccountServiceImp implements AccountService {
         if(departmentId!=null){
             department department=departmentDaoImp.getDepartmentById(departmentId);
             if(department==null){
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("department is not found");
                 return resultBean;
             }
@@ -242,12 +242,12 @@ public class AccountServiceImp implements AccountService {
 
         account.setStaffInfo(staffInfo);
         if(AccountDAOImp.editAccount(account)){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("update Account sucess");
             return resultBean;
         }
         else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("update Account faild");
             return resultBean;
         }

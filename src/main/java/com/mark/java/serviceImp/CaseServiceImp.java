@@ -93,11 +93,11 @@ public class CaseServiceImp implements CaseService {
         resultBean resultBean=new resultBean();
         caseInfo caseInfo=CaseInfoDAOImp.getCaseInfoByCaseNum(upLoadPicBean.getNum());
         if(uid==null||departmentId==null){
-        resultBean.setSucess(0);
+        resultBean.setSuccess(0);
             resultBean.setMessage("uid or departmentId is empty");
             return resultBean;
         }else if(caseInfo!=null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("case num is already exited");
             return resultBean;
         }
@@ -105,7 +105,7 @@ public class CaseServiceImp implements CaseService {
         Account account=AccountDAOImp.getAccountById(uid);
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(account==null||department==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not find account or department by id");
             return resultBean;
         }
@@ -117,7 +117,7 @@ public class CaseServiceImp implements CaseService {
         caseInfo.setYear(a.get(Calendar.YEAR));
         Integer caseInfoId= CaseInfoDAOImp.save(caseInfo);
         if(caseInfoId==null||caseInfoId<=0){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("save caseInfo error");
             return resultBean;
         }
@@ -126,7 +126,7 @@ public class CaseServiceImp implements CaseService {
                 tobacco mtobacco=new tobacco();
                 barcode mbarcode=barcodeDaoImp.getBarcodeByCodeNum(upLoadPicBean.getCigaretteList().get(i).getBarcode());
                 if(mbarcode==null){
-                    resultBean.setSucess(0);
+                    resultBean.setSuccess(0);
                     resultBean.setMessage("get barcode error");
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return resultBean;
@@ -144,14 +144,14 @@ public class CaseServiceImp implements CaseService {
                 mtobacco.setImagurls(tobaccoImgName1+";"+tobaccoImgName2);                       //设置香烟外观照片路径
                 Integer tobaccoId=TobaccoDaoImp.save(mtobacco);
                 if(tobaccoId==null||tobaccoId<=0){
-                    resultBean.setSucess(0);
+                    resultBean.setSuccess(0);
                     resultBean.setMessage("get barcode error");
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return resultBean;
                 }
               }
             }
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
         resultBean.setMessage("save caseInfo sucess");
         return resultBean;
         }
@@ -162,19 +162,19 @@ public class CaseServiceImp implements CaseService {
         Account account=AccountDAOImp.getAccountById(uid);
         resultBean resultBean=new resultBean();
         if(account==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("get a wrong uid");
             return resultBean;
         }
         if(casesList==null||casesList.size()==0){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("empty caseList");
             return resultBean;
         }
         for(int i=0;i<casesList.size();i++){
             if(account.is_admin()){
                 if(!CaseInfoDAOImp.delCaseInfoByCaseNum(casesList.get(i))){
-                    resultBean.setSucess(0);
+                    resultBean.setSuccess(0);
                     resultBean.setMessage("delete caseInfo unsucessful");
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return resultBean;
@@ -183,7 +183,7 @@ public class CaseServiceImp implements CaseService {
                 caseInfo tempCaseInfo=CaseInfoDAOImp.getCaseInfoByCaseNum(casesList.get(i));
                 if(tempCaseInfo!=null&&tempCaseInfo.getAccount().getUid()==account.getUid()){
                    if(!CaseInfoDAOImp.delCaseInfo(tempCaseInfo)) {
-                       resultBean.setSucess(0);
+                       resultBean.setSuccess(0);
                        resultBean.setMessage("delete caseInfo unsucessful");
                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                        return resultBean;
@@ -192,14 +192,14 @@ public class CaseServiceImp implements CaseService {
             }
 
         }
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("delete caseInfo sucess");
         return resultBean;
     }
 
     public resultBean getUserCasesList(Integer uid,int pagenum,int pagesize){
         resultBean resultBean=new resultBean();
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("get case list sucess");
         resultBean.getData().add(CaseInfoDAOImp.getUserCaseInfos(uid,pagenum,pagesize));
         return resultBean;
@@ -208,11 +208,11 @@ public class CaseServiceImp implements CaseService {
     public resultBean getTobaccoListByCaseId(String caseNum) {
         resultBean resultBean=new resultBean();
         if(caseNum==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("cannot get case number");
             return resultBean;
         }
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("get tobacco list sucess");
         resultBean.getData().add(TobaccoDaoImp.getTobaccosListByCaseNum(caseNum));
         return resultBean;

@@ -4,11 +4,9 @@ import com.mark.java.dataBean.delCasesListBean;
 import com.mark.java.dataBean.resultBean;
 import com.mark.java.dataBean.upLoadPicBean;
 import com.mark.java.entity.caseInfo;
+import com.mark.java.entity.notificationUser;
 import com.mark.java.entity.tobacco;
-import com.mark.java.serviceImp.AccountServiceImp;
-import com.mark.java.serviceImp.CaseServiceImp;
-import com.mark.java.serviceImp.DepartmentServiceImp;
-import com.mark.java.serviceImp.NotificationServiceImp;
+import com.mark.java.serviceImp.*;
 import com.mark.java.staticTool.staticToll;
 import org.apache.commons.fileupload.FileUpload;
 import org.apache.commons.fileupload.FileUploadException;
@@ -43,6 +41,16 @@ public class UserController {
     private NotificationServiceImp mNotificationServiceImp;
     @Autowired
     private CaseServiceImp mCaseServiceImp;
+    @Autowired
+    private com.mark.java.serviceImp.LawServiceImp LawServiceImp;
+
+    public com.mark.java.serviceImp.LawServiceImp getLawServiceImp() {
+        return LawServiceImp;
+    }
+
+    public void setLawServiceImp(com.mark.java.serviceImp.LawServiceImp lawServiceImp) {
+        LawServiceImp = lawServiceImp;
+    }
 
     public CaseServiceImp getmCaseServiceImp() {
         return mCaseServiceImp;
@@ -184,6 +192,27 @@ public class UserController {
     @ResponseBody
     public resultBean delCases(@RequestBody delCasesListBean delCasesListBean, @RequestParam int uid){
         return mCaseServiceImp.delCases(delCasesListBean.getCaseList(),uid);
+    }
+    @RequestMapping("/getAllLawInstrument")
+    @ResponseBody
+    public resultBean getAllLawInstrument(@RequestParam int pagenum,@RequestParam int uid,@RequestParam int pagesize,@RequestBody Map map){
+
+        return LawServiceImp.getAllLegalInstrument(uid,pagenum,pagesize);
+    }
+    @RequestMapping("/UserGetNotifications")
+    @ResponseBody
+    public resultBean UserGetNotifications(@RequestParam  int uid,@RequestParam int pagenum,@RequestParam int pagesize){
+
+        resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications(uid,pagenum,pagesize);
+        if(resultBean.getSuccess()==1){
+            List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
+            if(List!=null&&List.size()!=0){
+                for(int i=0;i<List.size();i++){
+                    List.get(i).setmUser(null);
+                }
+            }
+        }
+        return resultBean;
     }
     @RequestMapping("/logincheck")
     @ResponseBody

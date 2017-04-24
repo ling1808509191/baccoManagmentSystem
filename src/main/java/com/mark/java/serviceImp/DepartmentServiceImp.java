@@ -31,7 +31,7 @@ public class DepartmentServiceImp implements departmentService {
         resultBean resultBean=new resultBean();
         department tempDepartment=departmentDaoImp.getDepartmentByName(name);
         if(tempDepartment!=null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("department name is already exited");
             return resultBean;
         }else{
@@ -43,11 +43,11 @@ public class DepartmentServiceImp implements departmentService {
         int departmentId=departmentDaoImp.save(tempDepartment);
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(department==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("add department error £¨can not save department£©");
             return resultBean;
         }else{
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("add department sucess");
             resultBean.getData().add(department);
             return resultBean;
@@ -58,7 +58,7 @@ public class DepartmentServiceImp implements departmentService {
     public resultBean getAllDepartments(int pagenum, int pagesize) {
         resultBean resultBean=new resultBean();
         HashMap<String,Object> resultList=departmentDaoImp.findDepartment(pagenum,pagesize);
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("search sucess");
         resultBean.getData().add(resultList);
         return resultBean;
@@ -68,12 +68,12 @@ public class DepartmentServiceImp implements departmentService {
         resultBean resultBean=new resultBean();
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(department!=null){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("search sucess");
             resultBean.getData().add(department);
             return resultBean;
         }else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("search faild");
 
             return resultBean;
@@ -84,7 +84,7 @@ public class DepartmentServiceImp implements departmentService {
     public resultBean searchDepartment(String name, String phone) {
         resultBean resultBean=new resultBean();
         List<department> resultList=departmentDaoImp.searchDepartment(name,phone);
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("searching sucess");
         resultBean.getData().add(resultList);
         return resultBean;
@@ -94,7 +94,7 @@ public class DepartmentServiceImp implements departmentService {
        resultBean resultBean=new resultBean();
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(department==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("wrong departmentID");
             return resultBean;
         }
@@ -109,11 +109,11 @@ public class DepartmentServiceImp implements departmentService {
                 department.setDescription(description);
             }
             if(departmentDaoImp.editDepartment(department)){
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("update department sucess");
                 return resultBean;
             }
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("update department sucess");
         }
         return  resultBean;

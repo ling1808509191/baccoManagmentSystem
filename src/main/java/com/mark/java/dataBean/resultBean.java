@@ -7,21 +7,22 @@ import java.util.List;
  * Created by vcc on 2017/3/24.
  */
 public class resultBean {
-    private int sucess;
+    private int success;
     private String message;
     private List<Object> data;
     public resultBean(){
-        this.sucess=-1;
+        this.success=-1;
         this.message="";
         data=new ArrayList<Object>();
 
     }
-    public int getSucess() {
-        return sucess;
+
+    public int getSuccess() {
+        return success;
     }
 
-    public void setSucess(int sucess) {
-        this.sucess = sucess;
+    public void setSuccess(int success) {
+        this.success = success;
     }
 
     public String getMessage() {

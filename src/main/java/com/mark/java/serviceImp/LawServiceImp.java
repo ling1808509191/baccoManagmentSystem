@@ -32,7 +32,7 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         LawCategory templawCategory=LawCategoryDaoImp.getLawCategoryByName(name);
         if(templawCategory!=null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this name is already exited");
             return resultBean;
         }
@@ -40,13 +40,13 @@ public class LawServiceImp implements LawService{
         templawCategory.setName(name);
         int lawCategoryId=LawCategoryDaoImp.save(templawCategory);
        if(lawCategoryId>0){
-           resultBean.setSucess(1);
+           resultBean.setSuccess(1);
         resultBean.setMessage("add LawCategory sucess");
         resultBean.getData().add(LawCategoryDaoImp.getLawCategoryById(lawCategoryId));
         return resultBean;
        }
         else{
-           resultBean.setSucess(0);
+           resultBean.setSuccess(0);
            resultBean.setMessage("add LawCategory faild");
            return resultBean;
        }
@@ -56,17 +56,17 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         LawCategory templawCategory=LawCategoryDaoImp.getLawCategoryById(categoryId);
         if(templawCategory==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law category");
             return resultBean;
         }
 
         if(LawCategoryDaoImp.delLawCategory(categoryId)){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("ddelete lawCategory sucess");
             return resultBean;
         }else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("ddelete lawCategory faild");
             return resultBean;
         }
@@ -75,7 +75,7 @@ public class LawServiceImp implements LawService{
     public resultBean getLawCategoryList(int pagenum,int pagesize) {
         resultBean resultBean=new resultBean();
          resultBean.getData().add(LawCategoryDaoImp.findLawCategory(pagenum,pagesize));
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.setMessage("get law category list sucess");
         return resultBean;
     }
@@ -84,12 +84,12 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         Law tempLaw=lawDaoImp.getLawById(lawid);
         if(tempLaw!=null){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.getData().add(tempLaw);
             resultBean.setMessage("get law by id sucess");
             return resultBean;
         }else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("get law by id  faild");
             return resultBean;
         }
@@ -100,7 +100,7 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         LawCategory templawCategory=LawCategoryDaoImp.getLawCategoryById(categoryId);
         if(templawCategory==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law category");
             return resultBean;
         }
@@ -111,11 +111,11 @@ public class LawServiceImp implements LawService{
         tempLaw.setContent(content);
         int tempLawId =lawDaoImp.save(tempLaw);
         if(tempLawId>0){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("add Law sucess");
             return resultBean;
         }else{
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("ad Law faild");
             return resultBean;
         }
@@ -126,7 +126,7 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         Law tempLaw=lawDaoImp.getLawById(legalInstrumentId);
         if(tempLaw==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law ");
             return resultBean;
         }
@@ -137,12 +137,12 @@ public class LawServiceImp implements LawService{
             tempLaw.setContent(content);
         }
         if(lawDaoImp.editLaw(tempLaw)){
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("edit law sucess");
             return resultBean;
         }else{
             resultBean.setMessage("eidt law faild");
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             return resultBean;
         }
     }
@@ -152,17 +152,17 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         Law tempLaw=lawDaoImp.getLawById(legalInstrumentId);
         if(tempLaw==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law ");
             return resultBean;
         }else{
             tempLaw.setStatus(1);
            if(lawDaoImp.editLaw(tempLaw)) {
-               resultBean.setSucess(1);
+               resultBean.setSuccess(1);
                resultBean.setMessage("published law sucess");
                return resultBean;
            }else{
-               resultBean.setSucess(0);
+               resultBean.setSuccess(0);
                resultBean.setMessage("published law faild ");
                return resultBean;
             }
@@ -174,16 +174,16 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         Law tempLaw=lawDaoImp.getLawById(legalId);
         if(tempLaw==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law ");
             return resultBean;
         }else{
             if(lawDaoImp.delLaw(legalId)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("delete law sucess");
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("delete law faild ");
                 return resultBean;
             }
@@ -195,12 +195,12 @@ public class LawServiceImp implements LawService{
         resultBean resultBean=new resultBean();
         LawCategory tempLawcategory=LawCategoryDaoImp.getLawCategoryById(LawCategoryId);
         if(tempLawcategory==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("can not found this law category ");
             return resultBean;
         }else{
             List<Law> resultList=lawDaoImp.getLawByCategoryId(LawCategoryId);
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("get law list sucess");
             resultBean.getData().add(resultList);
             return resultBean;
@@ -211,18 +211,18 @@ public class LawServiceImp implements LawService{
       Account account= accountDAOImp.getAccountById(uid);
         resultBean resultBean=new resultBean();
         if(account==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("could not found this account");
             return resultBean;
 
         }
         if(account.is_admin()){
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
             resultBean.setMessage("found published law list sucess");
             resultBean.getData().add(lawDaoImp.getPublishedLaw(pagenum,pagesize));
             return resultBean;
         }else{
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
            resultBean.setMessage("found All law list sucess");
             resultBean.getData().add(lawDaoImp.findLaw(pagenum,pagesize));
             return resultBean;

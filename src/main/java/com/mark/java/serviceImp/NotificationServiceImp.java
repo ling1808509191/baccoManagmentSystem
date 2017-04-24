@@ -73,7 +73,7 @@ public class NotificationServiceImp implements NotificationService {
         notificaCategory notifyCategory=mNotifiCateDaoImp.getNotificaCategoryByName(NotifyCategoryName);
         resultBean resultBean=new resultBean();
         if(notifyCategory!=null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification category is already exited");
             return resultBean;
         }else{
@@ -81,12 +81,12 @@ public class NotificationServiceImp implements NotificationService {
             notifyCategory.setName(NotifyCategoryName);
             int notifycationCategoryId=mNotifiCateDaoImp.save(notifyCategory);
             if(notifycationCategoryId>0){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("add notification category sucess");
                 resultBean.getData().add(mNotifiCateDaoImp.getNotificaCategoryById(notifycationCategoryId));
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("add notification category faild");
                 return resultBean;
             }
@@ -97,17 +97,17 @@ public class NotificationServiceImp implements NotificationService {
         notificaCategory notifyCategory=mNotifiCateDaoImp.getNotificaCategoryById(categoryId);
         resultBean resultBean=new resultBean();
         if(notifyCategory==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification category is not found");
             return resultBean;
         }else{
             //List<notification> notifications=mNotificationDaoImp.findNotificationByCategoryId();
             if(mNotifiCateDaoImp.delNotificaCategory(categoryId)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("delete Notification category sucess");
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("delete Notification category faild");
                 return resultBean;
             }
@@ -116,7 +116,7 @@ public class NotificationServiceImp implements NotificationService {
 
     public resultBean getdelNotifyCategoryList() {
         resultBean resultBean=new resultBean();
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
         resultBean.getData().add(mNotifiCateDaoImp.findNotificaCategory());
         return resultBean;
     }
@@ -127,7 +127,7 @@ public class NotificationServiceImp implements NotificationService {
         notificaCategory notifyCategory=mNotifiCateDaoImp.getNotificaCategoryById(categoryId);
         resultBean resultBean=new resultBean();
         if(notifyCategory==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification category is not found");
             return resultBean;
         }else{
@@ -138,12 +138,12 @@ public class NotificationServiceImp implements NotificationService {
             notification.setTitle(title);
            int notificationId= mNotificationDaoImp.save(notification);
             if(notificationId>0){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage(" save notification sucess");
                 resultBean.getData().add(mNotificationDaoImp.getNotificationById(notificationId));
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("cannot save notification");
                 return resultBean;
             }
@@ -154,7 +154,7 @@ public class NotificationServiceImp implements NotificationService {
         notification notification=mNotificationDaoImp.getNotificationById(NotifiCationId);
         resultBean resultBean=new resultBean();
         if(notification==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification  is not found");
             return resultBean;
         }else{
@@ -170,11 +170,11 @@ public class NotificationServiceImp implements NotificationService {
                 notification.setStatus(status);
             }
             if(mNotificationDaoImp.editNotification(notification)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("update notification sucess");
                 return  resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("update notification faild");
                 return  resultBean;
             }
@@ -184,16 +184,16 @@ public class NotificationServiceImp implements NotificationService {
     public resultBean delNotification(Integer NotifiCationId) {
         resultBean resultBean=new resultBean();
         if(NotifiCationId==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("notification id cannot be null");
             return resultBean;
         }else{
             if(mNotificationDaoImp.delNotification(NotifiCationId)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("del notification sucess");
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("del notification faild");
                 return resultBean;
             }
@@ -204,7 +204,7 @@ public class NotificationServiceImp implements NotificationService {
         notification notification=mNotificationDaoImp.getNotificationById(NotifiCationId);
         resultBean resultBean=new resultBean();
         if(notification==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification  is not found");
             return resultBean;
         }else{
@@ -215,11 +215,11 @@ public class NotificationServiceImp implements NotificationService {
                 notification.setContent(content);
             }
             if(mNotificationDaoImp.editNotification(notification)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("edit Notification sucess");
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("edit Notification faild");
                 return resultBean;
             }
@@ -230,7 +230,7 @@ public class NotificationServiceImp implements NotificationService {
         notification notification=mNotificationDaoImp.getNotificationById(NotificationId);
         resultBean resultBean=new resultBean();
         if(notification==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification  is not found");
             return resultBean;
         }else{
@@ -266,18 +266,18 @@ public class NotificationServiceImp implements NotificationService {
                 }
                 }
                 if(flag){
-                    resultBean.setSucess(1);
+                    resultBean.setSuccess(1);
                     resultBean.setMessage("publish notification sucess");
                     return resultBean;
                 }else{
-                    resultBean.setSucess(0);
+                    resultBean.setSuccess(0);
                     resultBean.setMessage("publish notification faild");
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return resultBean;
                 }
 
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("publish notification faild");
                 return resultBean;
             }
@@ -288,11 +288,11 @@ public class NotificationServiceImp implements NotificationService {
         notification notification=mNotificationDaoImp.getNotificationById(NotificationId);
         resultBean resultBean=new resultBean();
         if(notification==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this Notification  is not found");
             return resultBean;
         }else{
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("this Notification  is  found");
             resultBean.getData().add(notification);
             return resultBean;
@@ -306,7 +306,7 @@ public class NotificationServiceImp implements NotificationService {
     public resultBean getTypeNotifications(int NotifyCategoryId, int pagenum, int pagesize) {
         HashMap<String,Object> notificationList=mNotificationDaoImp.findNotificationByCategoryId(NotifyCategoryId,pagenum,pagesize);
         resultBean resultBean=new resultBean();
-        resultBean.setSucess(1);
+        resultBean.setSuccess(1);
             resultBean.setMessage("this search notification by categoryId sucess ");
             resultBean.getData().add(notificationList);
             return resultBean;
@@ -318,18 +318,18 @@ public class NotificationServiceImp implements NotificationService {
         notificationUser notificationUser=mNotifiUserDaoImp.getNotifyUserByUserIdAndNotificationId(uid,notificationId);
         resultBean resultBean=new resultBean();
         if(notificationUser==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("this notificationUser  is not found");
             return resultBean;
         }else{
             notificationUser.setRead(true);
             if(mNotifiUserDaoImp.editNotifyUser(notificationUser)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("set notification readed sucess");
 
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("set notification readed faild");
                 return resultBean;
             }
@@ -341,11 +341,11 @@ public class NotificationServiceImp implements NotificationService {
         resultBean resultBean=new resultBean();
         HashMap<String,Object> resultList=mNotifiUserDaoImp.getUserNotifications(uid,pagenum,pagesize);
         if(resultList==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("get notifications by userid faild");
             return resultBean;
         }else{
-            resultBean.setSucess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("get notification by userid sucess");
             resultBean.getData().add(resultList);
             return resultBean;
@@ -356,17 +356,17 @@ public class NotificationServiceImp implements NotificationService {
         notificationUser notificationUser=mNotifiUserDaoImp.getNotifyUserByUserIdAndNotificationId(uid,notificationId);
         resultBean resultBean=new resultBean();
         if(notificationUser==null){
-            resultBean.setSucess(0);
+            resultBean.setSuccess(0);
             resultBean.setMessage("get notification faild");
             return resultBean;
         }else{
             notificationUser.setRead(true);
             if(  mNotifiUserDaoImp.editNotifyUser(notificationUser)){
-                resultBean.setSucess(1);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("set notification readed sucess");
                 return resultBean;
             }else{
-                resultBean.setSucess(0);
+                resultBean.setSuccess(0);
                 resultBean.setMessage("set notificaiton readed faild");
                 return resultBean;
             }

@@ -321,12 +321,7 @@ public class AdminController {
 
         return LawServiceImp.getOneTypeLaws(categoryId);
     }
-    @RequestMapping("/getAllLawInstrument")
-    @ResponseBody
-    public resultBean getAllLawInstrument(@RequestParam int pagenum,@RequestParam int uid,@RequestParam int pagesize,@RequestBody Map map){
 
-        return LawServiceImp.getAllLegalInstrument(uid,pagenum,pagesize);
-    }
     @RequestMapping("/publishLaw")
     @ResponseBody
     public resultBean publishLaw(@RequestBody Map map){
@@ -431,20 +426,6 @@ public class AdminController {
 
         return mNotificationServiceImp.getTypeNotifications(categoryId,pagenum,pagesize);
     }
-    @RequestMapping("/UserGetNotifications")
-    @ResponseBody
-    public resultBean UserGetNotifications(@RequestParam  int uid,@RequestParam int pagenum,@RequestParam int pagesize){
 
-        resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications(uid,pagenum,pagesize);
-       if(resultBean.getSucess()==1){
-           List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
-           if(List!=null&&List.size()!=0){
-               for(int i=0;i<List.size();i++){
-                   List.get(i).setmUser(null);
-               }
-           }
-       }
-       return resultBean;
-    }
 
 }
