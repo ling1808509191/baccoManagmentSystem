@@ -141,14 +141,14 @@ public class UserController {
       }
     @RequestMapping("/setNotificationReaded")
     @ResponseBody
-    public resultBean setNotificationReaded(@RequestParam int uid,@RequestBody Map map){
+    public resultBean setNotificationReaded(HttpServletRequest httpServletRequest,@RequestBody Map map){
         Integer notificationId=null;
         try{
             notificationId= (Integer)map.get("notification_id");
         }catch (Exception e){
             notificationId=null;
         }
-        return mNotificationServiceImp.setNotificationReaded(uid,notificationId);
+        return mNotificationServiceImp.setNotificationReaded((Integer)httpServletRequest.getAttribute("uid"),notificationId);
     }
     @RequestMapping("/getUsersCaseList")
     @ResponseBody
@@ -190,12 +190,12 @@ public class UserController {
     }
     @RequestMapping("/delCases")
     @ResponseBody
-    public resultBean delCases(@RequestBody delCasesListBean delCasesListBean, @RequestParam int uid){
-        return mCaseServiceImp.delCases(delCasesListBean.getCaseList(),uid);
+    public resultBean delCases(@RequestBody delCasesListBean delCasesListBean,HttpServletRequest httpServletRequest){
+        return mCaseServiceImp.delCases(delCasesListBean.getCaseList(),(Integer)httpServletRequest.getAttribute("uid"));
     }
     @RequestMapping("/getAllLawInstrument")
     @ResponseBody
-    public resultBean getAllLawInstrument(@RequestParam int pagenum,HttpServletRequest httpServletRequest,@RequestParam int pagesize,@RequestBody Map map){
+    public resultBean getAllLawInstrument(@RequestParam int pagenum,HttpServletRequest httpServletRequest,@RequestParam int pagesize){
 
         return LawServiceImp.getAllLegalInstrument((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
     }
