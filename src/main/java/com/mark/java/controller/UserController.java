@@ -1,5 +1,6 @@
 package com.mark.java.controller;
 
+import com.mark.java.dataBean.NotiationResultBean;
 import com.mark.java.dataBean.delCasesListBean;
 import com.mark.java.dataBean.resultBean;
 import com.mark.java.dataBean.upLoadPicBean;
@@ -201,18 +202,19 @@ public class UserController {
     }
     @RequestMapping("/UserGetNotifications")
     @ResponseBody
-    public resultBean UserGetNotifications(HttpServletRequest httpServletRequest,@RequestParam int pagenum,@RequestParam int pagesize){
+    public NotiationResultBean UserGetNotifications(HttpServletRequest httpServletRequest, @RequestParam int pagenum, @RequestParam int pagesize){
 
         resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
         if(resultBean.getSuccess()==1){
             List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
-            if(List!=null&&List.size()!=0){
-                for(int i=0;i<List.size();i++){
-                    List.get(i).setmUser(null);
-                }
-            }
+            return staticToll.notificationResultAdaptor(List);
+        }else{
+            NotiationResultBean notiationResultBean=new NotiationResultBean();
+            notiationResultBean.setSuccess(0);
+            notiationResultBean.setMessage("get notifications faild");
+            return notiationResultBean;
         }
-        return resultBean;
+
     }
     @RequestMapping("/logincheck")
     @ResponseBody

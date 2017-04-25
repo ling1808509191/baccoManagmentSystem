@@ -1,14 +1,14 @@
 package com.mark.java.staticTool;
 
+import com.mark.java.dataBean.NotiationResultBean;
+import com.mark.java.dataBean.resultBean;
+import com.mark.java.entity.notificationUser;
 import sun.misc.BASE64Decoder;
 
 import java.io.*;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by vcc on 2017/3/22.
@@ -76,6 +76,46 @@ public class staticToll {
         System.out.println(" after md5,token = :"+token);
         return token;
     }
+    public static NotiationResultBean notificationResultAdaptor(List<notificationUser> notificationUserList ){
+        NotiationResultBean notiationResultBean=new NotiationResultBean();
+        HashMap<String,Object> data = new HashMap<String, Object>();
+        List<HashMap<String,Object>> AllnotificationList=new LinkedList<HashMap<String, Object>>();
+        for(int i=0;i<notificationUserList.size();i++ ){
+            HashMap<String,Object> tempHashMap=new HashMap<String, Object>();
+            int categoryId=notificationUserList.get(i).getmNotification().getmCategory().getId();
+             String categoryName=notificationUserList.get(i).getmNotification().getmCategory().getName();
+            HashMap<String,Object> tempCategoryHashMap=null;
+            List<HashMap<String,Object>> categoryList=null;
+            for(int j=0;j<AllnotificationList.size();j++){
+                if(categoryId==(Integer)AllnotificationList.get(i).get("id")){
+                    tempCategoryHashMap=AllnotificationList .get(i);
+                    break;
+                }
+
+            }
+            if(tempCategoryHashMap==null){
+                tempCategoryHashMap=new HashMap<String, Object>();
+                tempCategoryHashMap.put("id",categoryId);
+                tempCategoryHashMap.put("name",categoryName);
+                tempCategoryHashMap.put("notifications",new LinkedList<Object>() );
+                AllnotificationList.add(tempCategoryHashMap);
+            }
+
+            HashMap<String,Object> tempnotificationMap=new HashMap<String, Object>();
+            tempnotificationMap.put("id",notificationUserList.get(i).getmNotification().getId());
+            tempnotificationMap.put("category_id",categoryId);
+            tempnotificationMap.put("title",notificationUserList.get(i).getmNotification().getTitle());
+            tempnotificationMap.put("content",notificationUserList.get(i).getmNotification().getContent());
+            tempnotificationMap.put("stauts",notificationUserList.get(i).getmNotification().getStatus());
+            tempnotificationMap.put("read",notificationUserList.get(i).isRead());
+            ((LinkedList)(tempCategoryHashMap.get("notifications"))).add(tempnotificationMap);
+        }
+        notiationResultBean.setSuccess(1);
+        notiationResultBean.setMessage("get notification sucess");
+        notiationResultBean.getData().put("all_notifications",AllnotificationList);
+        return notiationResultBean;
+    }
+
     public static boolean string2File(String res, String filename) {
         boolean flag = true;
 
