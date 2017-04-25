@@ -76,7 +76,7 @@ public class staticToll {
         System.out.println(" after md5,token = :"+token);
         return token;
     }
-    public static NotiationResultBean notificationResultAdaptor(List<notificationUser> notificationUserList ){
+    public static NotiationResultBean notificationResultAdaptor(List<notificationUser> notificationUserList,int totalNum ){
         NotiationResultBean notiationResultBean=new NotiationResultBean();
         HashMap<String,Object> data = new HashMap<String, Object>();
         List<HashMap<String,Object>> AllnotificationList=new LinkedList<HashMap<String, Object>>();
@@ -113,6 +113,7 @@ public class staticToll {
         notiationResultBean.setSuccess(1);
         notiationResultBean.setMessage("get notification sucess");
         notiationResultBean.getData().put("all_notifications",AllnotificationList);
+        notiationResultBean.getData().put("totalNum",totalNum);
         return notiationResultBean;
     }
 

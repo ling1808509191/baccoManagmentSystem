@@ -207,7 +207,8 @@ public class UserController {
         resultBean resultBean= mNotificationServiceImp.getUserTypeNotifications((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
         if(resultBean.getSuccess()==1){
             List<notificationUser> List=(List)((HashMap<String,Object>)resultBean.getData().get(0)).get("notificationList");
-            return staticToll.notificationResultAdaptor(List);
+            int totalNum=(Integer)((HashMap<String,Object>)resultBean.getData().get(0)).get("totalNum");
+            return staticToll.notificationResultAdaptor(List,totalNum);
         }else{
             NotiationResultBean notiationResultBean=new NotiationResultBean();
             notiationResultBean.setSuccess(0);
