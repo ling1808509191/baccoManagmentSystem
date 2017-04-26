@@ -87,8 +87,8 @@ public class staticToll {
             HashMap<String,Object> tempCategoryHashMap=null;
             List<HashMap<String,Object>> categoryList=null;
             for(int j=0;j<AllnotificationList.size();j++){
-                if(categoryId==(Integer)AllnotificationList.get(i).get("id")){
-                    tempCategoryHashMap=AllnotificationList .get(i);
+                if(categoryId==(Integer)AllnotificationList.get(j).get("id")){
+                    tempCategoryHashMap=AllnotificationList .get(j);
                     break;
                 }
 
