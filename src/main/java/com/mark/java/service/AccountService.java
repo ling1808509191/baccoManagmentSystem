@@ -14,6 +14,7 @@ public interface AccountService {
     public resultBean SearchAccountWithDepartmentId(String username,Boolean isAdmin,Integer status,String name,String phone,int departmentId);
     public resultBean SearchAccount(String username,Boolean isAdmin,Integer status,String name,String phone);
     public resultBean getAllAccount(int pagenum,int pagesize);
+    public resultBean updateAccountPassword(int AccountId,String password);
     public resultBean getAccountById(int AccountId);
     public resultBean editAccountStatus(int uid,int status);
     public resultBean editAccountInfo(int uid,String name,String phone,String email,Integer departmentId,String identityNum);

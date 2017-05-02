@@ -14,6 +14,8 @@ public interface appVersionDao {
     public int save(appVersion account);
     public List<appVersion> findappVersion(int pagenum, int pagesize);
     public appVersion getAppVersionById(int id);
+    public appVersion getAppVersionByVersion(String version);
+    public appVersion getNewestAppVersion();
     public boolean editappVersion(appVersion appVersion);
     public boolean delappVersion(appVersion appVersion);
     public boolean delappVersion(int id);

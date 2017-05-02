@@ -17,6 +17,7 @@ public interface LawCategoryDao {
     public int save(LawCategory LawCategory);
     public HashMap<String,Object> findLawCategory(int pagenum, int pagesize);
     public LawCategory getLawCategoryByName(String name);
+
     public boolean editLawCategory(LawCategory LawCategory);
     public LawCategory getLawCategoryById(int id);
     public boolean delLawCategory(LawCategory LawCategory);

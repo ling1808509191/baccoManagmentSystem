@@ -18,6 +18,15 @@ public class appVersion {
     private String apkUrl;
     private String description;
     private int status;
+    private long uploadTime;
+
+    public long getUploadTime() {
+        return uploadTime;
+    }
+
+    public void setUploadTime(long uploadTime) {
+        this.uploadTime = uploadTime;
+    }
 
     public int getId() {
         return id;

@@ -100,6 +100,12 @@ public class DepartmentServiceImp implements departmentService {
         }
         else{
             if(name!=null){
+                department tempDepartment=departmentDaoImp.getDepartmentByName(name);
+                if(name.equals(tempDepartment.getName())&&tempDepartment.getId()!=departmentId){
+                    resultBean.setSuccess(0);
+                    resultBean.setMessage("相同名字的部门已经存在");
+                    return resultBean;
+                }
                 department.setName(name);
             }
             if(phone!=null){
@@ -109,7 +115,7 @@ public class DepartmentServiceImp implements departmentService {
                 department.setDescription(description);
             }
             if(departmentDaoImp.editDepartment(department)){
-                resultBean.setSuccess(0);
+                resultBean.setSuccess(1);
                 resultBean.setMessage("update department sucess");
                 return resultBean;
             }

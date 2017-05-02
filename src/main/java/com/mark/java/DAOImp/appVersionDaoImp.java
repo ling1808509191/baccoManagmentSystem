@@ -40,6 +40,31 @@ public class appVersionDaoImp implements appVersionDao {
         return result;
     }
 
+    public appVersion getAppVersionByVersion(String version) {
+        String hql="from "+tableName+" a where a.version = ?";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString(0,version);
+       List<appVersion> result=query.list();
+        if(result==null||result.size()==0){
+            return null;
+        }else{
+            return result.get(0);
+        }
+
+    }
+
+    public appVersion getNewestAppVersion() {
+        String hql="from "+tableName+" a where a.uploadTime=(select max(b.uploadTime) from "+tableName+" b)";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        List<appVersion> result=query.list();
+        if(result==null||result.size()==0){
+            return null;
+        }else{
+            return result.get(0);
+        }
+
+    }
+
     public SessionFactory getSessionFactory() {
         return sessionFactory;
     }

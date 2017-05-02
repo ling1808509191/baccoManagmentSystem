@@ -63,6 +63,14 @@ public class LawDaoImp implements LawDao {
         return false;
     }
 
+    public int getLawNumberByCategory(int id) {
+        String hql="select count(*) from "+tableName+" a where a.mLawCategory.id = ? ";
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger(0,id);
+        int result=((Long)query.uniqueResult()).intValue();
+        return  result;
+    }
+
     public HashMap<String,Object> getPublishedLaw(int pagenum, int pagesize) {
         String hql=" from "+tableName+" a where a.status = 1 ";
         HashMap<String,Object> resultMap=new HashMap<String, Object>();

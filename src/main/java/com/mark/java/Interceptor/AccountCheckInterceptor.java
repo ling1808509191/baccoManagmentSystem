@@ -40,7 +40,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         try {
             out = response.getWriter();
             if(message==null){
-                out.append("{ \"message\":\"身份认证失败\"}");
+                out.append("{ \"message\":\"身份认证失败\",\"success\":-1}");
             }else{
                 out.append(message);
             }
@@ -81,7 +81,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             currenTime=System.currentTimeMillis();
             requestTime=Long.valueOf(time);
         }catch (Exception e){
-            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"认证信息缺失\"}");
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"认证信息缺失\",\"success\":-1 }");
             return false;
         }
 
@@ -112,7 +112,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             tokenAndLoginTime=account.getWeb_token();
         }
         if(tokenAndLoginTime==null){
-            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为空\"}");
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为空\",\"success\":-1}");
             return false;
         }
         String token=null;
@@ -121,12 +121,12 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             token=tokenAndLoginTime.split(";")[0];
             loginTime=Long.valueOf(tokenAndLoginTime.split(";")[1]);
         }else{
-            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为错误\"}");
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"数据库token为错误\",\"success\":-1}");
         }
         System.out.println("loginTime :　"+loginTime);
         System.out.println("currentTime : "+currenTime);
         if(loginTime==-1||currenTime-loginTime<0||currenTime-loginTime>(ReloginTime*millisecond)){
-            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"登陆时间超出或错误\"}");
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"登陆时间超出或错误\",\"success\":-1}");
             return false;
         }
         String signString=URI+"?token="+token+"&time="+time;
@@ -139,7 +139,7 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
         return true;
         }else{
 
-            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"sign值错误，需要计算的md5字符串为 : "+signString+" ,计算后的值为 : "+md5String+"\"}");
+            ReturnErrorMessage(httpServletResponse,"{ \"message\":\"sign值错误，需要计算的md5字符串为 : "+signString+" ,计算后的值为 : "+md5String+"\",\"success\":-1}");
             return false;
         }
 

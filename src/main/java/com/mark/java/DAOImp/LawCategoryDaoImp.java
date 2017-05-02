@@ -64,6 +64,8 @@ public class LawCategoryDaoImp implements LawCategoryDao {
     }
 
 
+
+
     public LawCategory getLawCategoryById(int id) {
        LawCategory result=null;
         result=(LawCategory)sessionFactory.getCurrentSession().get(LawCategory.class,id);

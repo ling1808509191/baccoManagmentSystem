@@ -18,6 +18,7 @@ public interface LawDao {
     public int save(Law Law);
     public HashMap<String,Object> findLaw(int pagenum, int pagesize);
     public boolean editLaw(Law Law);
+    public int getLawNumberByCategory(int id);
     public HashMap<String,Object> getPublishedLaw(int pagenum,int pagesize);
     public List<Law> getLawByCategoryId(int categoryId);
     public Law getLawById(int id);

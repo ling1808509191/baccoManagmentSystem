@@ -4,22 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body><script type="text/javascript" src="http://localhost:8080/bacco/js/jquery.min.js"></script>
-fucking index
-<script type="text/javascript">             var url = "http://localhost:8080/bacco/user/getUsersCaseList?from_platform=web";
-$.ajax({
-    type : "POST",
-    url : url,
-    data : {username:"name1", password:"des"},
-    dataType : "JSON",
-    contentType:"application/json",
-    success : function(result) {
-        console.log(result);
-    }
-});
+<body>
+<form action="http://localhost:8080/bacco/Admin/uploadApk" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" /> <input type="submit" value="Submit" /></form>
 
-
-
-</script> </body> </html>
+ </body> </html>
 </body>
 </html>

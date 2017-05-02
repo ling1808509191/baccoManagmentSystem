@@ -44,7 +44,16 @@ public class UserController {
     private CaseServiceImp mCaseServiceImp;
     @Autowired
     private com.mark.java.serviceImp.LawServiceImp LawServiceImp;
+    @Autowired
+    private AppVersionServiceImp appVersionServiceImp;
 
+    public AppVersionServiceImp getAppVersionServiceImp() {
+        return appVersionServiceImp;
+    }
+
+    public void setAppVersionServiceImp(AppVersionServiceImp appVersionServiceImp) {
+        this.appVersionServiceImp = appVersionServiceImp;
+    }
     public com.mark.java.serviceImp.LawServiceImp getLawServiceImp() {
         return LawServiceImp;
     }
@@ -194,6 +203,17 @@ public class UserController {
     public resultBean delCases(@RequestBody delCasesListBean delCasesListBean,HttpServletRequest httpServletRequest){
         return mCaseServiceImp.delCases(delCasesListBean.getCaseList(),(Integer)httpServletRequest.getAttribute("uid"));
     }
+    @RequestMapping("/updatePassWord")
+    @ResponseBody
+    public resultBean updatePassWord(@RequestBody Map map,HttpServletRequest httpServletRequest){
+        String password=null;
+        try{
+            password=(String)map.get("password");
+        }catch (Exception e){
+            password=null;
+        }
+        return AccountService.updateAccountPassword((Integer)httpServletRequest.getAttribute("uid"),password);
+    }
     @RequestMapping("/getAllLawInstrument")
     @ResponseBody
     public resultBean getAllLawInstrument(@RequestParam int pagenum,HttpServletRequest httpServletRequest,@RequestParam int pagesize){
@@ -238,5 +258,10 @@ public class UserController {
         }
         return AccountService.loginCheck(username,password,from_platform);
 
+    }
+    @RequestMapping("/getNewestApk")
+    @ResponseBody
+    public resultBean getNewestApk(){
+        return appVersionServiceImp.getNewestAppVersion();
     }
 }

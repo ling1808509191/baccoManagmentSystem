@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,7 +35,7 @@ public class LawServiceImp implements LawService{
         LawCategory templawCategory=LawCategoryDaoImp.getLawCategoryByName(name);
         if(templawCategory!=null){
             resultBean.setSuccess(0);
-            resultBean.setMessage("this name is already exited");
+            resultBean.setMessage("该法律类型名称已存在");
             return resultBean;
         }
         templawCategory=new LawCategory();
@@ -74,7 +76,18 @@ public class LawServiceImp implements LawService{
 
     public resultBean getLawCategoryList(int pagenum,int pagesize) {
         resultBean resultBean=new resultBean();
-         resultBean.getData().add(LawCategoryDaoImp.findLawCategory(pagenum,pagesize));
+        HashMap<String,Object> resultMap=LawCategoryDaoImp.findLawCategory(pagenum,pagesize);
+        List<LawCategory> lawCategoryList=(List)resultMap.get("LawCategoryList");
+        resultMap.remove("LawCategoryList");
+       List<HashMap> resultList=new ArrayList<HashMap>();
+        for(int i=0;i<lawCategoryList.size();i++){
+            HashMap<String,Object> temHashMap=new HashMap<String, Object>();
+            temHashMap.put("lawCategory",lawCategoryList.get(i));
+            temHashMap.put("Number",lawDaoImp.getLawNumberByCategory(lawCategoryList.get(i).getId()));
+            resultList.add(temHashMap);
+        }
+        resultMap.put("LawCategoryList",resultList);
+        resultBean.getData().add(resultMap);
         resultBean.setSuccess(1);
         resultBean.setMessage("get law category list sucess");
         return resultBean;
@@ -113,10 +126,11 @@ public class LawServiceImp implements LawService{
         if(tempLawId>0){
             resultBean.setSuccess(1);
             resultBean.setMessage("add Law sucess");
+            resultBean.getData().add(lawDaoImp.getLawById(tempLawId));
             return resultBean;
         }else{
             resultBean.setSuccess(0);
-            resultBean.setMessage("ad Law faild");
+            resultBean.setMessage("add Law faild");
             return resultBean;
         }
 
@@ -200,9 +214,12 @@ public class LawServiceImp implements LawService{
             return resultBean;
         }else{
             List<Law> resultList=lawDaoImp.getLawByCategoryId(LawCategoryId);
+            HashMap<String,Object> resultMap=new HashMap<String, Object>();
+            resultMap.put("lawList",resultList);
+            resultMap.put("lawCategoryName",tempLawcategory.getName());
             resultBean.setSuccess(1);
             resultBean.setMessage("get law list sucess");
-            resultBean.getData().add(resultList);
+            resultBean.getData().add(resultMap);
             return resultBean;
         }
     }

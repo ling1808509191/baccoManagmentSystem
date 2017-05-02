@@ -4,17 +4,18 @@ import com.mark.java.dataBean.publishRequestBean;
 import com.mark.java.dataBean.resultBean;
 import com.mark.java.entity.notification;
 import com.mark.java.entity.notificationUser;
-import com.mark.java.serviceImp.AccountServiceImp;
-import com.mark.java.serviceImp.DepartmentServiceImp;
-import com.mark.java.serviceImp.LawServiceImp;
-import com.mark.java.serviceImp.NotificationServiceImp;
+import com.mark.java.serviceImp.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +35,16 @@ public class AdminController {
     private LawServiceImp LawServiceImp;
     @Autowired
     private NotificationServiceImp mNotificationServiceImp;
+    @Autowired
+    private AppVersionServiceImp appVersionServiceImp;
+
+    public AppVersionServiceImp getAppVersionServiceImp() {
+        return appVersionServiceImp;
+    }
+
+    public void setAppVersionServiceImp(AppVersionServiceImp appVersionServiceImp) {
+        this.appVersionServiceImp = appVersionServiceImp;
+    }
 
     public com.mark.java.serviceImp.LawServiceImp getLawServiceImp() {
         return LawServiceImp;
@@ -265,6 +276,39 @@ public class AdminController {
     public resultBean getCategoryList(@RequestParam int pagenum,@RequestParam int pagesize){
 
         return LawServiceImp.getLawCategoryList(pagenum,pagesize);
+    }
+    @RequestMapping(value = "/uploadApk")
+    @ResponseBody
+    public resultBean upload(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam int status,
+                             @RequestParam String description,@RequestParam String version, HttpServletRequest request, ModelMap model) {
+        resultBean resultBean =new resultBean();
+        System.out.println("开始");
+        String path =System.getProperty("evan.webapp")+"apks"+File.separatorChar;
+        String fileName = file.getOriginalFilename();
+        if(fileName.contains(".apk")){
+            fileName="apk"+System.currentTimeMillis()+".apk";
+        }else{
+            resultBean tempResultBean=new resultBean();
+            tempResultBean.setSuccess(0);
+            tempResultBean.setMessage("请上传apk文件");
+            return tempResultBean;
+        }
+//        String fileName = new Date().getTime()+".jpg";
+        System.out.println(path);
+        File targetFile = new File(path, fileName);
+        if(!targetFile.exists()){
+            targetFile.mkdirs();
+        }
+
+        //保存
+        try {
+            file.transferTo(targetFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return appVersionServiceImp.saveApp(fileName,description,version,status);
     }
     @RequestMapping("/addLawInstrument")
     @ResponseBody

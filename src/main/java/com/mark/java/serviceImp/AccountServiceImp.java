@@ -168,6 +168,28 @@ public class AccountServiceImp implements AccountService {
         return resultBean;
     }
 
+    public resultBean updateAccountPassword(int AccountId, String password) {
+        Account temAccount=AccountDAOImp.getAccountById(AccountId);
+        resultBean resultBean=new resultBean();
+        if(temAccount==null){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("id错误，无法找到该用户");
+            return resultBean;
+        }
+        if(password==null||"".equals(password)){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("密码不能为空");
+            return resultBean;
+        }
+        temAccount.setPassword(password);
+        temAccount.setWeb_token("");
+        temAccount.setApp_token("");
+        AccountDAOImp.editAccount(temAccount);
+        resultBean.setSuccess(1);
+        resultBean.setMessage("密码更新成功");
+        return resultBean;
+    }
+
     public resultBean getAccountById(int AccountId) {
         resultBean resultBean=new resultBean();
         Account account= AccountDAOImp.getAccountById(AccountId);
