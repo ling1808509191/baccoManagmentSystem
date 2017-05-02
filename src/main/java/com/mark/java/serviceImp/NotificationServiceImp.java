@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -117,7 +118,15 @@ public class NotificationServiceImp implements NotificationService {
     public resultBean getdelNotifyCategoryList() {
         resultBean resultBean=new resultBean();
         resultBean.setSuccess(1);
-        resultBean.getData().add(mNotifiCateDaoImp.findNotificaCategory());
+        List<HashMap> result=new ArrayList<HashMap>();
+        List<notificaCategory> resultList=mNotifiCateDaoImp.findNotificaCategory();
+        for(int i=0;i<resultList.size();i++){
+            HashMap<String,Object> temHashMap=new HashMap<String, Object>();
+            temHashMap.put("Category",resultList.get(i));
+            temHashMap.put("number",mNotificationDaoImp.getNotificationNumberByCategoryId(resultList.get(i).getId()));
+            result.add(temHashMap);
+        }
+        resultBean.getData().add(result);
         return resultBean;
     }
 

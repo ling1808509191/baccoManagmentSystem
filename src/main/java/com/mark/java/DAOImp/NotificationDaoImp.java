@@ -75,6 +75,15 @@ public class NotificationDaoImp implements notificationDao {
         return result;
     }
 
+    public int getNotificationNumberByCategoryId(int categoryId) {
+        String hql="select count(*) from "+tableName+" a where a.mCategory.id = ? ";
+
+        Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        query.setInteger(0,categoryId);
+        int result=((Long)query.uniqueResult()).intValue();
+        return result;
+    }
+
 
     public boolean editNotification(notification notification) {
         if (notification != null) {
