@@ -32,7 +32,7 @@ public class DepartmentServiceImp implements departmentService {
         department tempDepartment=departmentDaoImp.getDepartmentByName(name);
         if(tempDepartment!=null){
             resultBean.setSuccess(0);
-            resultBean.setMessage("department name is already exited");
+            resultBean.setMessage("该部门名称已存在");
             return resultBean;
         }else{
             tempDepartment=new department();
@@ -101,7 +101,7 @@ public class DepartmentServiceImp implements departmentService {
         else{
             if(name!=null){
                 department tempDepartment=departmentDaoImp.getDepartmentByName(name);
-                if(name.equals(tempDepartment.getName())&&tempDepartment.getId()!=departmentId){
+                if(tempDepartment!=null&&name.equals(tempDepartment.getName())&&tempDepartment.getId()!=departmentId){
                     resultBean.setSuccess(0);
                     resultBean.setMessage("相同名字的部门已经存在");
                     return resultBean;

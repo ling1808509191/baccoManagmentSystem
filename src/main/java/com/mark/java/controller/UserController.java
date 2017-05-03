@@ -207,12 +207,18 @@ public class UserController {
     @ResponseBody
     public resultBean updatePassWord(@RequestBody Map map,HttpServletRequest httpServletRequest){
         String password=null;
+        String oldPassword=null;
         try{
             password=(String)map.get("password");
         }catch (Exception e){
             password=null;
         }
-        return AccountService.updateAccountPassword((Integer)httpServletRequest.getAttribute("uid"),password);
+        try{
+            oldPassword=(String)map.get("oldPassword");
+        }catch (Exception e){
+            oldPassword=null;
+        }
+        return AccountService.updateAccountPassword((Integer)httpServletRequest.getAttribute("uid"),password,oldPassword);
     }
     @RequestMapping("/getAllLawInstrument")
     @ResponseBody

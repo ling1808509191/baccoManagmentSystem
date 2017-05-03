@@ -124,10 +124,15 @@ public class AccountDAOImp implements AccountDao {
     public List<Account> searchAccount(String username, Boolean is_admin, Integer status, String name, String phone) {
         String is_adminString=null;
         String statusString=null;
+        String isAdminHqlString=null;
         if(is_admin==null){
             is_adminString="";
+            isAdminHqlString="";
         }else{
+
             is_adminString=String.valueOf(is_admin);
+
+            isAdminHqlString= " and a.is_admin = "+is_adminString;
         }
         if(status==null){
             statusString="";
@@ -136,7 +141,7 @@ public class AccountDAOImp implements AccountDao {
         }
         String hql="from "+tableName+" a where a.username like '%"+username+"%' and a.staffInfo.name like '%"+name+
                 "%' and a.staffInfo.phone like '%"+
-                phone+"%' and a.is_admin like '%"+is_adminString+"%' and a.status like '%"+statusString+"%'";
+                phone+"%' and a.status like '%"+statusString+"%'"+isAdminHqlString;
 //
         System.out.println(" hql : "+hql);
         Query query=sessionFactory.getCurrentSession().createQuery(hql);

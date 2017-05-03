@@ -168,7 +168,7 @@ public class AccountServiceImp implements AccountService {
         return resultBean;
     }
 
-    public resultBean updateAccountPassword(int AccountId, String password) {
+    public resultBean updateAccountPassword(int AccountId, String password,String oldPassword) {
         Account temAccount=AccountDAOImp.getAccountById(AccountId);
         resultBean resultBean=new resultBean();
         if(temAccount==null){
@@ -179,6 +179,11 @@ public class AccountServiceImp implements AccountService {
         if(password==null||"".equals(password)){
             resultBean.setSuccess(0);
             resultBean.setMessage("密码不能为空");
+            return resultBean;
+        }
+        if(!temAccount.getPassword().equals(oldPassword)){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("原密码错误");
             return resultBean;
         }
         temAccount.setPassword(password);
