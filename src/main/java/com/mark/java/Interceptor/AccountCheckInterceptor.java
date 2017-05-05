@@ -106,9 +106,9 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             return false;
         }
 
-        if(platform.equals("app")){
+        if("app".equals(platform)){
             tokenAndLoginTime=account.getApp_token();
-        }else if(platform.equals("web")){
+        }else if("web".equals(platform)){
             tokenAndLoginTime=account.getWeb_token();
         }
         if(tokenAndLoginTime==null){
@@ -142,8 +142,6 @@ public class AccountCheckInterceptor  implements HandlerInterceptor{
             ReturnErrorMessage(httpServletResponse,"{ \"message\":\"sign值错误，需要计算的md5字符串为 : "+signString+" ,计算后的值为 : "+md5String+"\",\"success\":-1}");
             return false;
         }
-
-
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {

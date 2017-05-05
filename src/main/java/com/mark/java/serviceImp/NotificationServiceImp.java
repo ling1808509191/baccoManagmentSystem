@@ -314,10 +314,14 @@ public class NotificationServiceImp implements NotificationService {
 
     public resultBean getTypeNotifications(int NotifyCategoryId, int pagenum, int pagesize) {
         HashMap<String,Object> notificationList=mNotificationDaoImp.findNotificationByCategoryId(NotifyCategoryId,pagenum,pagesize);
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
+        notificaCategory mNotificationCategory=mNotifiCateDaoImp.getNotificaCategoryById(NotifyCategoryId);
+        resultMap.put("category",mNotificationCategory);
+        resultMap.put("notificationList",notificationList);
         resultBean resultBean=new resultBean();
-        resultBean.setSuccess(1);
+            resultBean.setSuccess(1);
             resultBean.setMessage("this search notification by categoryId sucess ");
-            resultBean.getData().add(notificationList);
+            resultBean.getData().add(resultMap);
             return resultBean;
 
 

@@ -143,12 +143,17 @@ public class UserController {
 
         return mNotificationServiceImp.getdelNotifyCategoryList( );
     }
-
     @RequestMapping("/upLoadCases")
     @ResponseBody
       public resultBean upLoadCases(@RequestBody upLoadPicBean upLoadPicBean){
-        return mCaseServiceImp.casesUpload(upLoadPicBean);
+        return mCaseServiceImp.casesUpload(upLoadPicBean,false);
       }
+
+    @RequestMapping("/editCase")
+    @ResponseBody
+    public resultBean editCase(@RequestBody upLoadPicBean upLoadPicBean){
+        return mCaseServiceImp.casesUpload(upLoadPicBean,true);
+    }
     @RequestMapping("/setNotificationReaded")
     @ResponseBody
     public resultBean setNotificationReaded(HttpServletRequest httpServletRequest,@RequestBody Map map){

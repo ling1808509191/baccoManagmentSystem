@@ -87,7 +87,7 @@ public class CaseServiceImp implements CaseService {
         this.staffInfoDaoImp = staffInfoDaoImp;
     }
 
-    public resultBean casesUpload(upLoadPicBean upLoadPicBean) {
+    public resultBean casesUpload(upLoadPicBean upLoadPicBean,boolean updateCase) {
         Integer uid=upLoadPicBean.getUser_id();
         Integer departmentId=upLoadPicBean.getDepartment_id();
         resultBean resultBean=new resultBean();
@@ -96,10 +96,24 @@ public class CaseServiceImp implements CaseService {
         resultBean.setSuccess(0);
             resultBean.setMessage("uid or departmentId is empty");
             return resultBean;
-        }else if(caseInfo!=null){
+        }else if(caseInfo!=null&&!updateCase){
             resultBean.setSuccess(0);
             resultBean.setMessage("case num is already exited");
             return resultBean;
+        }else if(caseInfo!=null&&updateCase){
+                List<tobacco> TobaccosList=TobaccoDaoImp.getTobaccosListByCaseNum(caseInfo.getCaseInfoNum());
+            for(int i=0;i<TobaccosList.size();i++){
+                tobacco tempTobacco=TobaccosList.get(i);
+                String LaserCodeFileName=tempTobacco.getLaserCodeUrl();
+                staticToll.deleteFile(LaserCodeFileName);
+                String [] imgs=tempTobacco.getImagurls().split(";");
+                for(int j=0;j<imgs.length;j++){
+                    String fileName=imgs[j];
+                    staticToll.deleteFile(fileName);
+                }
+            }
+            CaseInfoDAOImp.delCaseInfo(caseInfo);
+            caseInfo=null;
         }
         caseInfo =new caseInfo();
         Account account=AccountDAOImp.getAccountById(uid);
@@ -111,7 +125,12 @@ public class CaseServiceImp implements CaseService {
         }
         caseInfo.setAccount(account);
         caseInfo.setmDepartment(department);
-        caseInfo.setSubmit_time(upLoadPicBean.getDate());
+        caseInfo.setTimeStamp(System.currentTimeMillis());
+        if(!updateCase)
+        {
+            caseInfo.setSubmit_time(upLoadPicBean.getDate());
+        }
+
         caseInfo.setCaseInfoNum(upLoadPicBean.getNum());
         Calendar a=Calendar.getInstance();
         caseInfo.setYear(a.get(Calendar.YEAR));
@@ -190,7 +209,6 @@ public class CaseServiceImp implements CaseService {
                    }
                 }
             }
-
         }
         resultBean.setSuccess(1);
         resultBean.setMessage("delete caseInfo sucess");

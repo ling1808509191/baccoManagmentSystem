@@ -9,6 +9,8 @@ public class upLoadPicBean {
     private String date;
     private Integer department_id;
     private String num;
+
+
     private Integer user_id;
     private Integer total_num;
     private List<cigarete> cigaretteList;

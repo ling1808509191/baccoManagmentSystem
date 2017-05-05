@@ -22,6 +22,15 @@ public class caseInfo {
     private String submit_time;
     @Column(unique = true)
     private String caseInfoNum;
+   private Long TimeStamp;
+
+    public Long getTimeStamp() {
+        return TimeStamp;
+    }
+
+    public void setTimeStamp(Long timeStamp) {
+        TimeStamp = timeStamp;
+    }
 
     public String getCaseInfoNum() {
         return caseInfoNum;
@@ -40,6 +49,7 @@ public class caseInfo {
     }
 
     private int year;
+
     private String description;
 
     public int getId() {
