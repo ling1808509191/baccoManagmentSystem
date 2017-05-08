@@ -36,7 +36,7 @@ public class AppVersionServiceImp implements appVersionService {
         this.appVersionDaoImp = appVersionDaoImp;
     }
 
-    public resultBean saveApp(String filename, String description, String version, int status) {
+    public resultBean saveApp(String filename, String description, String version) {
         resultBean resultBean=new resultBean();
         appVersion tempAppVersion=appVersionDaoImp.getAppVersionByVersion(version);
         if(tempAppVersion!=null){
@@ -46,7 +46,6 @@ public class AppVersionServiceImp implements appVersionService {
         }else{
             tempAppVersion.setApkUrl(filename);
             tempAppVersion.setDescription(description);
-            tempAppVersion.setStatus(status);
             tempAppVersion.setUploadTime(System.currentTimeMillis());
             tempAppVersion.setVersion(version);
             if(appVersionDaoImp.save(tempAppVersion)>0){
@@ -62,8 +61,19 @@ public class AppVersionServiceImp implements appVersionService {
         }
     }
 
-    public resultBean getAllAppVersion() {
-        return null;
+    public resultBean getAllAppVersion(int pagenum,int pagesize) {
+        resultBean resultBean=new resultBean();
+        HashMap<String,Object> AllAppVersion=appVersionDaoImp.findappVersion(pagenum,pagesize);
+        if(AllAppVersion==null){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("获取所有apk记录失败");
+            return resultBean;
+        }else{
+            resultBean.setSuccess(1);
+            resultBean.setMessage("获取所有apk记录成功");
+            resultBean.getData().add(AllAppVersion);
+            return resultBean;
+        }
     }
 
     public resultBean getNewestAppVersion() {

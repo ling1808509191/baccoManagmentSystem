@@ -279,7 +279,7 @@ public class AdminController {
     }
     @RequestMapping(value = "/uploadApk")
     @ResponseBody
-    public resultBean upload(@RequestParam(value = "file", required = false) MultipartFile file, @RequestParam int status,
+    public resultBean upload(@RequestParam(value = "file", required = false) MultipartFile file,
                              @RequestParam String description,@RequestParam String version, HttpServletRequest request, ModelMap model) {
         resultBean resultBean =new resultBean();
         System.out.println("¿ªÊ¼");
@@ -308,7 +308,7 @@ public class AdminController {
         }
 
 
-        return appVersionServiceImp.saveApp(fileName,description,version,status);
+        return appVersionServiceImp.saveApp(fileName,description,version);
     }
     @RequestMapping("/addLawInstrument")
     @ResponseBody
@@ -470,6 +470,11 @@ public class AdminController {
 
         return mNotificationServiceImp.getTypeNotifications(categoryId,pagenum,pagesize);
     }
+    @RequestMapping("/getAllApkRecords")
+    @ResponseBody
+    public resultBean getAllApkVersions(@RequestParam int pagenum,@RequestParam int pagesize){
 
+        return appVersionServiceImp.getAllAppVersion(pagenum,pagesize);
+    }
 
 }

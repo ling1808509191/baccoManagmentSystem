@@ -5,6 +5,7 @@ import com.mark.java.entity.Account;
 import com.mark.java.entity.Result;
 import com.mark.java.entity.appVersion;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface appVersionDao {
     public int save(appVersion account);
-    public List<appVersion> findappVersion(int pagenum, int pagesize);
+    public HashMap<String,Object> findappVersion(int pagenum, int pagesize);
     public appVersion getAppVersionById(int id);
     public appVersion getAppVersionByVersion(String version);
     public appVersion getNewestAppVersion();

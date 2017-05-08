@@ -12,7 +12,7 @@ import java.util.List;
  * Created by vcc on 2017/3/20.
  */
 public interface appVersionService {
-    public resultBean saveApp(String filename,String description,String version,int status);
-    public resultBean getAllAppVersion();
+    public resultBean saveApp(String filename,String description,String version);
+    public resultBean getAllAppVersion(int pagenum,int pagesize);
     public resultBean getNewestAppVersion();
 }

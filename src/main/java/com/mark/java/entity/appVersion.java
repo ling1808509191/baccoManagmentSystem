@@ -17,7 +17,6 @@ public class appVersion {
     private String version;
     private String apkUrl;
     private String description;
-    private int status;
     private long uploadTime;
 
     public long getUploadTime() {
@@ -58,13 +57,5 @@ public class appVersion {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 }

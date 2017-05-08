@@ -132,8 +132,7 @@ public class CaseServiceImp implements CaseService {
         }
 
         caseInfo.setCaseInfoNum(upLoadPicBean.getNum());
-        Calendar a=Calendar.getInstance();
-        caseInfo.setYear(a.get(Calendar.YEAR));
+        caseInfo.setYear(upLoadPicBean.getYear());
         Integer caseInfoId= CaseInfoDAOImp.save(caseInfo);
         if(caseInfoId==null||caseInfoId<=0){
             resultBean.setSuccess(0);
@@ -238,5 +237,38 @@ public class CaseServiceImp implements CaseService {
 
     public resultBean get(Integer uid) {
         return null;
+    }
+
+    public resultBean editTobaccoLaserCode(int tobaccoId, String laserCode,int uid) {
+        tobacco mtobacco=TobaccoDaoImp.getTobaccoById(tobaccoId);
+        resultBean resultBean=new resultBean();
+        Account mAccount=AccountDAOImp.getAccountById(uid);
+
+        if(mtobacco==null){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("获取烟草信息失败");
+            return resultBean;
+        }
+        if(mAccount==null){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("账号异常");
+            return resultBean;
+        }
+        if((!mAccount.is_admin())||mtobacco.getmCase_info().getAccount().getUid()!=uid){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("用户权限不足");
+            return resultBean;
+        }
+        mtobacco.setLaserCodeNum(laserCode);
+        if(TobaccoDaoImp.editTobacco(mtobacco)){
+            resultBean.setSuccess(1);
+            resultBean.setMessage("更新激光码成功");
+            return resultBean;
+        }else{
+            resultBean.setSuccess(0);
+            resultBean.setMessage("更新激光码失败");
+            return resultBean;
+        }
+
     }
 }

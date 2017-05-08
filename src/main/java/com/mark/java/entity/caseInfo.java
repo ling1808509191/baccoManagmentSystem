@@ -18,9 +18,19 @@ public class caseInfo {
     @ManyToOne(targetEntity = com.mark.java.entity.Account.class)
     @JoinColumn(name = "A_id",referencedColumnName = "uid")
      private Account Account;
-
+    private int totalCigaretteNum;
     private String submit_time;
+
+    public int getTotalCigaretteNum() {
+        return totalCigaretteNum;
+    }
+
+    public void setTotalCigaretteNum(int totalCigaretteNum) {
+        this.totalCigaretteNum = totalCigaretteNum;
+    }
+
     @Column(unique = true)
+
     private String caseInfoNum;
    private Long TimeStamp;
 
@@ -48,7 +58,7 @@ public class caseInfo {
         this.department = department;
     }
 
-    private int year;
+    private String year;
 
     private String description;
 
@@ -84,11 +94,11 @@ public class caseInfo {
         this.submit_time = submit_time;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

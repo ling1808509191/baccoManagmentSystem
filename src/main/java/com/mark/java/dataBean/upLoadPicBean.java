@@ -10,6 +10,15 @@ public class upLoadPicBean {
     private Integer department_id;
     private String num;
 
+    private String year;
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
 
     private Integer user_id;
     private Integer total_num;

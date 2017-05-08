@@ -148,12 +148,12 @@ public class UserController {
       public resultBean upLoadCases(@RequestBody upLoadPicBean upLoadPicBean){
         return mCaseServiceImp.casesUpload(upLoadPicBean,false);
       }
-
     @RequestMapping("/editCase")
     @ResponseBody
     public resultBean editCase(@RequestBody upLoadPicBean upLoadPicBean){
         return mCaseServiceImp.casesUpload(upLoadPicBean,true);
     }
+
     @RequestMapping("/setNotificationReaded")
     @ResponseBody
     public resultBean setNotificationReaded(HttpServletRequest httpServletRequest,@RequestBody Map map){
@@ -274,5 +274,24 @@ public class UserController {
     @ResponseBody
     public resultBean getNewestApk(){
         return appVersionServiceImp.getNewestAppVersion();
+    }
+    @RequestMapping("/editTobaccolaserCode")
+    @ResponseBody
+    public resultBean editTobaccolaserCode(HttpServletRequest httpServletRequest,@RequestBody Map map){
+        Integer tobaccoId=null;
+        String LaserCode=null;
+        try{
+            tobaccoId=(Integer)map.get("tobaccoId");
+        }
+        catch (Exception e){
+            tobaccoId=null;
+        }
+        try{
+            LaserCode=(String)map.get("LaserCode");
+        }
+        catch (Exception e){
+            LaserCode=null;
+        }
+        return mCaseServiceImp.editTobaccoLaserCode(tobaccoId,LaserCode,(Integer)httpServletRequest.getAttribute("uid"));
     }
 }

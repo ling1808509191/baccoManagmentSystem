@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,14 +25,18 @@ public class appVersionDaoImp implements appVersionDao {
         return (Integer) sessionFactory.getCurrentSession().save(appVersion);
     }
 
-    public List<appVersion> findappVersion(int pagenum, int pagesize) {
+    public HashMap<String,Object> findappVersion(int pagenum, int pagesize) {
         String hql="from "+tableName;
+        HashMap<String,Object> resultMap=new HashMap<String, Object>();
         Query query=sessionFactory.getCurrentSession().createQuery(hql);
+        Query CountQuery=sessionFactory.getCurrentSession().createQuery("select count(*) "+hql);
         query.setFirstResult((pagenum-1)*pagesize);
         query.setMaxResults(pagesize);
         List<appVersion> result=null;
         result= query.list();
-        return result;
+        resultMap.put("appVersionList",result);
+        resultMap.put("totalNum",((Long)CountQuery.uniqueResult()).intValue());
+        return resultMap;
     }
 
     public appVersion getAppVersionById(int id) {

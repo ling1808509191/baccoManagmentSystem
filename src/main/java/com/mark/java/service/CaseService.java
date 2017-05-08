@@ -14,4 +14,5 @@ public interface CaseService {
     public resultBean getUserCasesList(Integer uid,int pagenum,int pagesize);
     public resultBean getTobaccoListByCaseId(String caseNum);
     public resultBean get(Integer uid);
+    public resultBean editTobaccoLaserCode(int tobaccoId,String laserCode,int uid);
 }
