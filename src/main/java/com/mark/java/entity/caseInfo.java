@@ -21,45 +21,10 @@ public class caseInfo {
     private int totalCigaretteNum;
     private String submit_time;
 
-    public int getTotalCigaretteNum() {
-        return totalCigaretteNum;
-    }
-
-    public void setTotalCigaretteNum(int totalCigaretteNum) {
-        this.totalCigaretteNum = totalCigaretteNum;
-    }
-
     @Column(unique = true)
-
     private String caseInfoNum;
-   private Long TimeStamp;
-
-    public Long getTimeStamp() {
-        return TimeStamp;
-    }
-
-    public void setTimeStamp(Long timeStamp) {
-        TimeStamp = timeStamp;
-    }
-
-    public String getCaseInfoNum() {
-        return caseInfoNum;
-    }
-
-    public void setCaseInfoNum(String caseInfoNum) {
-        this.caseInfoNum = caseInfoNum;
-    }
-
-    public com.mark.java.entity.department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(com.mark.java.entity.department department) {
-        this.department = department;
-    }
-
+    private Long TimeStamp;
     private String year;
-
     private String description;
 
     public int getId() {
@@ -70,20 +35,28 @@ public class caseInfo {
         this.id = id;
     }
 
-    public department getmDepartment() {
+    public com.mark.java.entity.department getDepartment() {
         return department;
     }
 
-    public void setmDepartment(department mDepartment) {
-        this.department = mDepartment;
+    public void setDepartment(com.mark.java.entity.department department) {
+        this.department = department;
     }
 
-    public Account getAccount() {
+    public com.mark.java.entity.Account getAccount() {
         return Account;
     }
 
-    public void setAccount(Account mAccount) {
-        this.Account = mAccount;
+    public void setAccount(com.mark.java.entity.Account account) {
+        Account = account;
+    }
+
+    public int getTotalCigaretteNum() {
+        return totalCigaretteNum;
+    }
+
+    public void setTotalCigaretteNum(int totalCigaretteNum) {
+        this.totalCigaretteNum = totalCigaretteNum;
     }
 
     public String getSubmit_time() {
@@ -92,6 +65,22 @@ public class caseInfo {
 
     public void setSubmit_time(String submit_time) {
         this.submit_time = submit_time;
+    }
+
+    public String getCaseInfoNum() {
+        return caseInfoNum;
+    }
+
+    public void setCaseInfoNum(String caseInfoNum) {
+        this.caseInfoNum = caseInfoNum;
+    }
+
+    public Long getTimeStamp() {
+        return TimeStamp;
+    }
+
+    public void setTimeStamp(Long timeStamp) {
+        TimeStamp = timeStamp;
     }
 
     public String getYear() {

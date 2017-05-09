@@ -38,6 +38,18 @@ public class AdminController {
     @Autowired
     private AppVersionServiceImp appVersionServiceImp;
 
+    @Autowired
+    private CaseServiceImp mCaseServiceImp;
+
+    public CaseServiceImp getmCaseServiceImp() {
+        return mCaseServiceImp;
+    }
+
+    public void setmCaseServiceImp(CaseServiceImp mCaseServiceImp) {
+        this.mCaseServiceImp = mCaseServiceImp;
+    }
+
+
     public AppVersionServiceImp getAppVersionServiceImp() {
         return appVersionServiceImp;
     }
@@ -457,6 +469,12 @@ public class AdminController {
        }
 
         return mNotificationServiceImp.delNotification(notificationId);
+    }
+    @RequestMapping("/getAllCases")
+    @ResponseBody
+    public resultBean getAllCases(@RequestParam int pagenum,@RequestParam int pagesize){
+
+        return mCaseServiceImp.getAllCasesList(pagenum,pagesize);
     }
     @RequestMapping("/getNotificationByCategory")
     @ResponseBody

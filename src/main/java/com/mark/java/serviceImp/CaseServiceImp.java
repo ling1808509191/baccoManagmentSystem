@@ -124,7 +124,7 @@ public class CaseServiceImp implements CaseService {
             return resultBean;
         }
         caseInfo.setAccount(account);
-        caseInfo.setmDepartment(department);
+        caseInfo.setDepartment(department);
         caseInfo.setTimeStamp(System.currentTimeMillis());
         if(!updateCase)
         {
@@ -132,6 +132,7 @@ public class CaseServiceImp implements CaseService {
         }
 
         caseInfo.setCaseInfoNum(upLoadPicBean.getNum());
+        caseInfo.setTotalCigaretteNum(upLoadPicBean.getTotal_num());
         caseInfo.setYear(upLoadPicBean.getYear());
         Integer caseInfoId= CaseInfoDAOImp.save(caseInfo);
         if(caseInfoId==null||caseInfoId<=0){
@@ -219,6 +220,14 @@ public class CaseServiceImp implements CaseService {
         resultBean.setSuccess(1);
         resultBean.setMessage("get case list sucess");
         resultBean.getData().add(CaseInfoDAOImp.getUserCaseInfos(uid,pagenum,pagesize));
+        return resultBean;
+    }
+
+    public resultBean getAllCasesList(int pagenum, int pagesize) {
+        resultBean resultBean=new resultBean();
+        resultBean.setSuccess(1);
+        resultBean.setMessage("get All cases sucess");
+        resultBean.getData().add(CaseInfoDAOImp.findCaseInfo(pagenum,pagesize));
         return resultBean;
     }
 

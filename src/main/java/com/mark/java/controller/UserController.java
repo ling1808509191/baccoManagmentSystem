@@ -170,16 +170,15 @@ public class UserController {
     public resultBean getUsersCaseList(HttpServletRequest httpServletRequest,@RequestParam int pagenum,@RequestParam int pagesize){
 
         resultBean resultBean= mCaseServiceImp.getUserCasesList((Integer)httpServletRequest.getAttribute("uid"),pagenum,pagesize);
-        List<caseInfo> list=null;
-        if(resultBean.getData().size()!=0){
-            list=(List)((HashMap<String,Object>) resultBean.getData().get(0)).get("caseList");
-        }
-
-        if(list!=null&&list.size()!=0)
-        for(int i=0;i<list.size();i++){
-            list.get(i).setAccount(null);
-            list.get(i).setmDepartment(null);
-        }
+//        List<caseInfo> list=null;
+//        if(resultBean.getData().size()!=0){
+//            list=(List)((HashMap<String,Object>) resultBean.getData().get(0)).get("caseList");
+//        }
+//        if(list!=null&&list.size()!=0)
+//        for(int i=0;i<list.size();i++){
+//            list.get(i).setAccount(null);
+//            list.get(i).setDepartment(null);
+//        }
         return resultBean;
     }
     @RequestMapping("/getTobaccoListbyCaseNum")
