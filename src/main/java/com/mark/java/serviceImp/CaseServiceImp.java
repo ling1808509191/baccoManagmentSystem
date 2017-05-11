@@ -263,7 +263,7 @@ public class CaseServiceImp implements CaseService {
             resultBean.setMessage("账号异常");
             return resultBean;
         }
-        if((!mAccount.is_admin())||mtobacco.getmCase_info().getAccount().getUid()!=uid){
+        if((!mAccount.is_admin())&&mtobacco.getmCase_info().getAccount().getUid()!=uid){
             resultBean.setSuccess(0);
             resultBean.setMessage("用户权限不足");
             return resultBean;
