@@ -44,6 +44,7 @@ public class AppVersionServiceImp implements appVersionService {
             resultBean.setMessage("相同版本已经存在");
             return resultBean;
         }else{
+            tempAppVersion=new appVersion();
             tempAppVersion.setApkUrl(filename);
             tempAppVersion.setDescription(description);
             tempAppVersion.setUploadTime(System.currentTimeMillis());
