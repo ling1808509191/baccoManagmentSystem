@@ -49,9 +49,11 @@ public class AppVersionServiceImp implements appVersionService {
             tempAppVersion.setDescription(description);
             tempAppVersion.setUploadTime(System.currentTimeMillis());
             tempAppVersion.setVersion(version);
-            if(appVersionDaoImp.save(tempAppVersion)>0){
+            int appVersionId=appVersionDaoImp.save(tempAppVersion);
+            if(appVersionId>0){
                 resultBean.setMessage("save apk success");
                 resultBean.setSuccess(1);
+                resultBean.getData().add(appVersionDaoImp.getAppVersionById(appVersionId));
                 return resultBean;
             }else{
                 resultBean.setSuccess(0);
