@@ -91,6 +91,7 @@ public class CaseServiceImp implements CaseService {
         Integer uid=upLoadPicBean.getUser_id();
         Integer departmentId=upLoadPicBean.getDepartment_id();
         resultBean resultBean=new resultBean();
+        String subtime=null;
         caseInfo caseInfo=CaseInfoDAOImp.getCaseInfoByCaseNum(upLoadPicBean.getNum());
         if(uid==null||departmentId==null){
         resultBean.setSuccess(0);
@@ -112,10 +113,11 @@ public class CaseServiceImp implements CaseService {
                     staticToll.deleteFile(fileName);
                 }
             }
+            subtime=caseInfo.getSubmit_time();
             CaseInfoDAOImp.delCaseInfo(caseInfo);
             caseInfo=null;
         }
-        caseInfo =new caseInfo();
+          caseInfo =new caseInfo();
         Account account=AccountDAOImp.getAccountById(uid);
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(account==null||department==null){
@@ -129,6 +131,8 @@ public class CaseServiceImp implements CaseService {
         if(!updateCase)
         {
             caseInfo.setSubmit_time(upLoadPicBean.getDate());
+        }else{
+            caseInfo.setSubmit_time(subtime);
         }
 
         caseInfo.setCaseInfoNum(upLoadPicBean.getNum());

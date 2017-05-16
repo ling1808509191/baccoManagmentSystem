@@ -49,13 +49,14 @@ public class NotificationDaoImp implements notificationDao {
         resultMap.put("notificationList",result);
         return resultMap;
     }
-//    ALTER TABLE caseInfo
-//    ADD CONSTRAINT `FK_DepartmentReference_2`
-//    FOREIGN KEY (`d_id` )
-//    REFERENCES department (`id` )
+//    ALTER TABLE tobacco
+//    ADD CONSTRAINT `FK_tobacco_caseReference_2`
+//    FOREIGN KEY (`m_id` )
+//    REFERENCES caseInfo (`id` )
 //    ON DELETE CASCADE
 //    ON UPDATE RESTRICT;
 //    ALTER TABLE caseInfo DROP FOREIGN KEY `FK_oxk7bnk7ln5dnpwpb8vrl7o3a` ;
+//    alter table caseInfo drop index UK_si6ngkw9dbnnlh4arko2wajwa;
     public HashMap<String, Object> findNotificationByCategoryId(int categoryId, int pagenum, int pagesize) {
         String hql=" from "+tableName+" a where a.mCategory.id = ?";
         HashMap<String,Object> resultMap=new HashMap<String, Object>();

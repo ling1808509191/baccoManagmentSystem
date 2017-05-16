@@ -21,7 +21,6 @@ public class caseInfo {
     private int totalCigaretteNum;
     private String submit_time;
 
-    @Column(unique = true)
     private String caseInfoNum;
     private Long TimeStamp;
     private String year;
