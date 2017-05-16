@@ -22,7 +22,8 @@ public class barcodeDaoImp implements barcodeDao {
     private String tableName="barcode";
 
     public int save(barcode barcode) {
-        return (Integer) sessionFactory.getCurrentSession().save(barcode);
+         sessionFactory.getCurrentSession().saveOrUpdate(barcode);
+        return 1;
     }
 
     public SessionFactory getSessionFactory() {

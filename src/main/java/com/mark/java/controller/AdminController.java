@@ -2,10 +2,13 @@ package com.mark.java.controller;
 
 import com.mark.java.dataBean.publishRequestBean;
 import com.mark.java.dataBean.resultBean;
+import com.mark.java.entity.barcode;
 import com.mark.java.entity.notification;
 import com.mark.java.entity.notificationUser;
 import com.mark.java.serviceImp.*;
 import com.mark.java.staticTool.staticToll;
+import jxl.Sheet;
+import jxl.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,7 +45,16 @@ public class AdminController {
 
     @Autowired
     private CaseServiceImp mCaseServiceImp;
+    @Autowired
+    private BarcodeServiceImp BarcodeServiceImp;
 
+    public com.mark.java.serviceImp.BarcodeServiceImp getBarcodeServiceImp() {
+        return BarcodeServiceImp;
+    }
+
+    public void setBarcodeServiceImp(com.mark.java.serviceImp.BarcodeServiceImp barcodeServiceImp) {
+        BarcodeServiceImp = barcodeServiceImp;
+    }
     public CaseServiceImp getmCaseServiceImp() {
         return mCaseServiceImp;
     }
@@ -330,6 +342,36 @@ public class AdminController {
             return tempResultBean;
         }
     }
+    @RequestMapping(value = "/uploadExcel")
+    @ResponseBody
+    public resultBean uploadExcel(@RequestParam(value = "file", required = false) MultipartFile file) {
+        resultBean resultBean =new resultBean();
+        System.out.println("开始");
+        String path =System.getProperty("evan.webapp")+"excels"+File.separatorChar;
+        String fileName = file.getOriginalFilename();
+        if(fileName.contains(".xls")){
+        }else{
+            resultBean tempResultBean=new resultBean();
+            tempResultBean.setSuccess(0);
+            tempResultBean.setMessage("请上传excel文件");
+            return tempResultBean;
+        }
+//        String fileName = new Date().getTime()+".jpg";
+        System.out.println(path);
+        File targetFile = new File(path, fileName);
+        if(!targetFile.exists()){
+            targetFile.mkdirs();
+        }
+        //保存
+        try {
+            file.transferTo(targetFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        resultBean.setSuccess(1);
+        resultBean.setMessage("保存文件成功");
+        return resultBean;
+    }
     @RequestMapping("/addLawInstrument")
     @ResponseBody
     public resultBean addLawInstrument(@RequestBody Map map){
@@ -502,5 +544,103 @@ public class AdminController {
 
         return appVersionServiceImp.getAllAppVersion(pagenum,pagesize);
     }
+    @RequestMapping("/addBarcode")
+    @ResponseBody
+    public resultBean addBarcode(@RequestBody Map file) {
+        resultBean resultBean=new resultBean();
+        String Number=(String)file.get("number");
+        String Name=(String)file.get("name");
+        Double whoPrice=(Double)file.get("whoPrice");
+        Double referPrice=(Double)file.get("referPrice");
+        String specifications=(String)file.get("specifications");
+        barcode barcode=BarcodeServiceImp.getbarcodeBybarcodeNum(Number);
+        if(barcode==null){
+            barcode=new barcode();
+            barcode.setBarcodeNum(Number);
+        }
+        barcode.setName(Name);
+        barcode.setSpecifications(specifications);
+        barcode.setWholesalesPrice(whoPrice);
+        barcode.setReferenceRetailPrice(referPrice);
+        BarcodeServiceImp.saveBarcode(barcode);
+        resultBean.setSuccess(1);
+        resultBean.setMessage("save barcode success");
+        return resultBean;
+    }
+    @RequestMapping("/readBarcodeEccel")
+    @ResponseBody
+    public resultBean readBarcodeEccel(@RequestBody Map file) {
+        resultBean resultBean=new resultBean();
+        String filename = (String) file.get("fileName");
+        int rowStart = (Integer) file.get("rowStart");
+        int rowEnd = (Integer) file.get("rowEnd");
+        int colNumber = (Integer) file.get("colNumber");
+        int colName = (Integer) file.get("colName");
+        int colWhol = (Integer) file.get("colWhol");
+        int colspec=(Integer) file.get("colspec");
+        int colRef = (Integer) file.get("colRef");
+        String imgFilePath =System.getProperty("evan.webapp")+"excels"+File.separatorChar+filename;
+        File xlsFile = new File(imgFilePath);
+        // 获得工作簿对象
+        Workbook workbook = null;
+        try {
+            workbook = Workbook.getWorkbook(xlsFile);
+        } catch (Exception e) {
+            resultBean.setSuccess(0);
+            resultBean.setMessage("读取Excel文件失败");
+            return resultBean;
+        }
 
+        // 获得所有工作表
+        Sheet[] sheets = workbook.getSheets();
+        // 遍历工作表
+        if (sheets != null) {
+            for (Sheet sheet : sheets) {
+
+                // 读取数据
+                for (int row = rowStart; row < rowEnd; row++) {
+                    barcode barcode=null;
+                    String barcodeNum= sheet.getCell(colNumber, row).getContents();
+                    barcode=BarcodeServiceImp.getbarcodeBybarcodeNum(barcodeNum);
+                    if(barcode==null){
+                        barcode=  new barcode();
+                        barcode.setBarcodeNum(barcodeNum);
+                    }
+                    barcode.setName( sheet.getCell(colName, row).getContents());
+                    if(colWhol!=-1) {
+                        try {
+                            barcode.setWholesalesPrice(Double.valueOf(sheet.getCell(colWhol, row).getContents().replaceAll(" ", "")));
+
+                        } catch (Exception e) {
+                            System.out.println("row : " + row + "  col +:" + colWhol);
+                            resultBean.getData().add(barcode);
+
+                        }
+                    }
+                    if(colRef!=-1){
+                        try{  barcode.setReferenceRetailPrice(Double.valueOf(sheet.getCell(colRef, row).getContents().replaceAll(" ", "")));
+                        }catch (Exception e){
+                            resultBean.getData().add(barcode);
+                            System.out.println("row : "+row+"  col +:"+ colRef);
+                            System.out.println("barcodeNum : "+barcodeNum);
+                            System.out.println(sheet.getCell(colRef, row).getContents());
+                        }
+                    }
+                    if(colspec!=-1){
+                        try{
+                            barcode.setSpecifications(sheet.getCell(colspec, row).getContents());
+                        }catch (Exception e){
+                            System.out.println("row : "+row+"  col +:"+ colspec);
+                            resultBean.getData().add(barcode);
+                        }
+                    }
+                    BarcodeServiceImp.saveBarcode(barcode);
+                }
+            }
+        }
+        workbook.close();
+        resultBean.setSuccess(1);
+        resultBean.setMessage("读取Excel成功 ,以下编号没有录入成功");
+        return resultBean;
+    }
 }
