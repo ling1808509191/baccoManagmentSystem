@@ -34,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-227">
-              <caret line="153" column="37" selection-start-line="153" selection-start-column="37" selection-end-line="153" selection-end-column="37" />
+            <state relative-caret-position="475">
+              <caret line="157" column="17" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -47,19 +47,105 @@
       <file leaf-file-name="CaseServiceImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+            <state relative-caret-position="859">
+              <caret line="155" column="45" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InvocableHandlerMethod.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.4.RELEASE/spring-web-4.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <file leaf-file-name="TobaccoDaoImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/TobaccoDaoImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="600">
+              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#632#633#0" expanded="false" />
+                <element signature="e#669#670#0" expanded="false" />
+                <element signature="e#737#738#0" expanded="false" />
+                <element signature="e#789#790#0" expanded="false" />
+                <element signature="e#829#830#0" expanded="false" />
+                <element signature="e#910#911#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upLoadPicBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/dataBean/upLoadPicBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="23" column="29" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="29" />
+              <folding>
+                <element signature="e#264#265#0" expanded="false" />
+                <element signature="e#291#292#0" expanded="false" />
+                <element signature="e#331#332#0" expanded="false" />
+                <element signature="e#363#364#0" expanded="false" />
+                <element signature="e#497#498#0" expanded="false" />
+                <element signature="e#524#525#0" expanded="false" />
+                <element signature="e#564#565#0" expanded="false" />
+                <element signature="e#596#597#0" expanded="false" />
+                <element signature="e#637#638#0" expanded="false" />
+                <element signature="e#673#674#0" expanded="false" />
+                <element signature="e#732#733#0" expanded="false" />
+                <element signature="e#782#783#0" expanded="false" />
+                <element signature="e#812#813#0" expanded="false" />
+                <element signature="e#838#839#0" expanded="false" />
+                <element signature="e#876#877#0" expanded="false" />
+                <element signature="e#906#907#0" expanded="false" />
+                <element signature="e#941#942#0" expanded="false" />
+                <element signature="e#971#972#0" expanded="false" />
+                <element signature="e#1018#1019#0" expanded="false" />
+                <element signature="e#1056#1057#0" expanded="false" />
+                <element signature="e#1093#1094#0" expanded="false" />
+                <element signature="e#1125#1126#0" expanded="false" />
+                <element signature="e#1176#1177#0" expanded="false" />
+                <element signature="e#1218#1219#0" expanded="false" />
+                <element signature="e#1266#1267#0" expanded="false" />
+                <element signature="e#1302#1303#0" expanded="false" />
+                <element signature="e#1368#1369#0" expanded="false" />
+                <element signature="e#1418#1419#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cigarete.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/dataBean/cigarete.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="e#367#368#0" expanded="false" />
+                <element signature="e#402#403#0" expanded="false" />
+                <element signature="e#458#459#0" expanded="false" />
+                <element signature="e#506#507#0" expanded="false" />
+                <element signature="e#545#546#0" expanded="false" />
+                <element signature="e#580#581#0" expanded="false" />
+                <element signature="e#636#637#0" expanded="false" />
+                <element signature="e#684#685#0" expanded="false" />
+                <element signature="e#715#716#0" expanded="false" />
+                <element signature="e#742#743#0" expanded="false" />
+                <element signature="e#782#783#0" expanded="false" />
+                <element signature="e#814#815#0" expanded="false" />
+                <element signature="e#847#848#0" expanded="false" />
+                <element signature="e#875#876#0" expanded="false" />
+                <element signature="e#918#919#0" expanded="false" />
+                <element signature="e#952#953#0" expanded="false" />
+                <element signature="e#986#987#0" expanded="false" />
+                <element signature="e#1016#1017#0" expanded="false" />
+                <element signature="e#1062#1063#0" expanded="false" />
+                <element signature="e#1100#1101#0" expanded="false" />
+                <element signature="e#1133#1134#0" expanded="false" />
+                <element signature="e#1162#1163#0" expanded="false" />
+                <element signature="e#1206#1207#0" expanded="false" />
+                <element signature="e#1242#1243#0" expanded="false" />
+                <element signature="e#1275#1276#0" expanded="false" />
+                <element signature="e#1304#1305#0" expanded="false" />
+                <element signature="e#1348#1349#0" expanded="false" />
+                <element signature="e#1384#1385#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,25 +153,42 @@
       <file leaf-file-name="testController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/testController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
+            <state relative-caret-position="1475">
               <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1142#1143#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1142#1143#0" expanded="false" />
+                <element signature="e#1182#1183#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="581" column="78" selection-start-line="581" selection-start-column="78" selection-end-line="581" selection-end-column="78" />
+            <state relative-caret-position="8450">
+              <caret line="380" column="50" selection-start-line="380" selection-start-column="50" selection-end-line="380" selection-end-column="50" />
               <folding>
-                <element signature="e#1702#1703#0" expanded="true" />
-                <element signature="e#1742#1743#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1702#1703#0" expanded="false" />
+                <element signature="e#1742#1743#0" expanded="false" />
+                <element signature="e#1946#1947#0" expanded="false" />
+                <element signature="e#1984#1985#0" expanded="false" />
+                <element signature="e#2054#2055#0" expanded="false" />
+                <element signature="e#2108#2109#0" expanded="false" />
+                <element signature="e#2170#2171#0" expanded="false" />
+                <element signature="e#2213#2214#0" expanded="false" />
+                <element signature="e#2435#2436#0" expanded="false" />
+                <element signature="e#2471#2472#0" expanded="false" />
+                <element signature="e#2672#2673#0" expanded="false" />
+                <element signature="e#2718#2719#0" expanded="false" />
+                <element signature="e#2934#2935#0" expanded="false" />
+                <element signature="e#2971#2972#0" expanded="false" />
+                <element signature="e#3042#3043#0" expanded="false" />
+                <element signature="e#3089#3090#0" expanded="false" />
+                <element signature="e#3147#3148#0" expanded="false" />
+                <element signature="e#3187#3188#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -94,9 +197,15 @@
       <file leaf-file-name="staticToll.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/staticTool/staticToll.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
+            <state relative-caret-position="5125">
               <caret line="217" column="39" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#803#804#0" expanded="false" />
+                <element signature="e#866#867#0" expanded="false" />
+                <element signature="e#1004#1005#0" expanded="false" />
+                <element signature="e#1067#1068#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,37 +223,32 @@
       <file leaf-file-name="barcode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/entity/barcode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
+            <state relative-caret-position="475">
               <caret line="19" column="33" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BarcodeServiceImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/BarcodeServiceImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#581#582#0" expanded="true" />
-                <element signature="e#617#618#0" expanded="true" />
-                <element signature="e#804#805#0" expanded="true" />
-                <element signature="e#856#857#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#462#463#0" expanded="false" />
+                <element signature="e#487#488#0" expanded="false" />
+                <element signature="e#520#521#0" expanded="false" />
+                <element signature="e#548#549#0" expanded="false" />
+                <element signature="e#585#586#0" expanded="false" />
+                <element signature="e#618#619#0" expanded="false" />
+                <element signature="e#670#671#0" expanded="false" />
+                <element signature="e#714#715#0" expanded="false" />
+                <element signature="e#745#746#0" expanded="false" />
+                <element signature="e#772#773#0" expanded="false" />
+                <element signature="e#812#813#0" expanded="false" />
+                <element signature="e#844#845#0" expanded="false" />
+                <element signature="e#885#886#0" expanded="false" />
+                <element signature="e#922#923#0" expanded="false" />
+                <element signature="e#982#983#0" expanded="false" />
+                <element signature="e#1034#1035#0" expanded="false" />
+                <element signature="e#1081#1082#0" expanded="false" />
+                <element signature="e#1124#1125#0" expanded="false" />
+                <element signature="e#1302#1303#0" expanded="false" />
+                <element signature="e#1340#1341#0" expanded="false" />
+                <element signature="e#1402#1403#0" expanded="false" />
+                <element signature="e#1456#1457#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="barcodeDaoImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/barcodeDaoImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -216,7 +320,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/spring-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mark/java/entity/caseInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/NotificationDaoImp.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/mark/java/service/barcodeService.java" />
@@ -225,6 +328,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/mark/java/controller/testController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/excels/test.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/mark/java/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java" />
       </list>
     </option>
   </component>
@@ -289,6 +393,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -870,8 +976,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1510,12 +1614,15 @@
       <workItem from="1494868281627" duration="1403000" />
       <workItem from="1494870067980" duration="2098000" />
       <workItem from="1494914094946" duration="1613000" />
-      <workItem from="1494918075889" duration="10710000" />
+      <workItem from="1494918075889" duration="11309000" />
+      <workItem from="1495006733235" duration="1977000" />
+      <workItem from="1495019074747" duration="1555000" />
+      <workItem from="1495024596210" duration="1751000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="415409000" />
+    <option name="totallyTimeSpent" value="421291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -1543,8 +1650,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.48277718" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33582088" sideWeight="0.5065574" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.48277718" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1646,7 +1753,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java</url>
-          <line>255</line>
+          <line>259</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
@@ -1678,21 +1785,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/dataBean/upLoadPicBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/department/department.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1050">
@@ -1722,13 +1814,6 @@
         <state relative-caret-position="423">
           <caret line="37" column="59" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/TobaccoDaoImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1909,7 +1994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2800">
           <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1917,7 +2001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1925,7 +2008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1150">
           <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1933,7 +2015,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10050">
           <caret line="451" column="0" selection-start-line="451" selection-start-column="0" selection-end-line="451" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1973,7 +2054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1985,41 +2065,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.4.RELEASE/spring-web-4.0.4.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="2975">
           <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/BarcodeServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="475">
           <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-            <element signature="e#804#805#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#617#618#0" expanded="false" />
+            <element signature="e#804#805#0" expanded="false" />
+            <element signature="e#856#857#0" expanded="false" />
+            <element signature="e#920#921#0" expanded="false" />
+            <element signature="e#988#989#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/barcodeDaoImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
+        <state relative-caret-position="400">
           <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
           <folding />
         </state>
@@ -2027,9 +2098,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/entity/barcode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
+        <state relative-caret-position="475">
           <caret line="19" column="33" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="33" />
-          <folding />
+          <folding>
+            <element signature="e#462#463#0" expanded="false" />
+            <element signature="e#487#488#0" expanded="false" />
+            <element signature="e#520#521#0" expanded="false" />
+            <element signature="e#548#549#0" expanded="false" />
+            <element signature="e#585#586#0" expanded="false" />
+            <element signature="e#618#619#0" expanded="false" />
+            <element signature="e#670#671#0" expanded="false" />
+            <element signature="e#714#715#0" expanded="false" />
+            <element signature="e#745#746#0" expanded="false" />
+            <element signature="e#772#773#0" expanded="false" />
+            <element signature="e#812#813#0" expanded="false" />
+            <element signature="e#844#845#0" expanded="false" />
+            <element signature="e#885#886#0" expanded="false" />
+            <element signature="e#922#923#0" expanded="false" />
+            <element signature="e#982#983#0" expanded="false" />
+            <element signature="e#1034#1035#0" expanded="false" />
+            <element signature="e#1081#1082#0" expanded="false" />
+            <element signature="e#1124#1125#0" expanded="false" />
+            <element signature="e#1302#1303#0" expanded="false" />
+            <element signature="e#1340#1341#0" expanded="false" />
+            <element signature="e#1402#1403#0" expanded="false" />
+            <element signature="e#1456#1457#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2043,40 +2137,161 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/testController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
+        <state relative-caret-position="1475">
           <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-            <element signature="e#1182#1183#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1142#1143#0" expanded="false" />
+            <element signature="e#1182#1183#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-227">
-          <caret line="153" column="37" selection-start-line="153" selection-start-column="37" selection-end-line="153" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/staticTool/staticToll.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
+        <state relative-caret-position="5125">
           <caret line="217" column="39" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#803#804#0" expanded="false" />
+            <element signature="e#866#867#0" expanded="false" />
+            <element signature="e#1004#1005#0" expanded="false" />
+            <element signature="e#1067#1068#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="581" column="78" selection-start-line="581" selection-start-column="78" selection-end-line="581" selection-end-column="78" />
+        <state relative-caret-position="8450">
+          <caret line="380" column="50" selection-start-line="380" selection-start-column="50" selection-end-line="380" selection-end-column="50" />
           <folding>
-            <element signature="e#1702#1703#0" expanded="true" />
-            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1702#1703#0" expanded="false" />
+            <element signature="e#1742#1743#0" expanded="false" />
+            <element signature="e#1946#1947#0" expanded="false" />
+            <element signature="e#1984#1985#0" expanded="false" />
+            <element signature="e#2054#2055#0" expanded="false" />
+            <element signature="e#2108#2109#0" expanded="false" />
+            <element signature="e#2170#2171#0" expanded="false" />
+            <element signature="e#2213#2214#0" expanded="false" />
+            <element signature="e#2435#2436#0" expanded="false" />
+            <element signature="e#2471#2472#0" expanded="false" />
+            <element signature="e#2672#2673#0" expanded="false" />
+            <element signature="e#2718#2719#0" expanded="false" />
+            <element signature="e#2934#2935#0" expanded="false" />
+            <element signature="e#2971#2972#0" expanded="false" />
+            <element signature="e#3042#3043#0" expanded="false" />
+            <element signature="e#3089#3090#0" expanded="false" />
+            <element signature="e#3147#3148#0" expanded="false" />
+            <element signature="e#3187#3188#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/dataBean/cigarete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#367#368#0" expanded="false" />
+            <element signature="e#402#403#0" expanded="false" />
+            <element signature="e#458#459#0" expanded="false" />
+            <element signature="e#506#507#0" expanded="false" />
+            <element signature="e#545#546#0" expanded="false" />
+            <element signature="e#580#581#0" expanded="false" />
+            <element signature="e#636#637#0" expanded="false" />
+            <element signature="e#684#685#0" expanded="false" />
+            <element signature="e#715#716#0" expanded="false" />
+            <element signature="e#742#743#0" expanded="false" />
+            <element signature="e#782#783#0" expanded="false" />
+            <element signature="e#814#815#0" expanded="false" />
+            <element signature="e#847#848#0" expanded="false" />
+            <element signature="e#875#876#0" expanded="false" />
+            <element signature="e#918#919#0" expanded="false" />
+            <element signature="e#952#953#0" expanded="false" />
+            <element signature="e#986#987#0" expanded="false" />
+            <element signature="e#1016#1017#0" expanded="false" />
+            <element signature="e#1062#1063#0" expanded="false" />
+            <element signature="e#1100#1101#0" expanded="false" />
+            <element signature="e#1133#1134#0" expanded="false" />
+            <element signature="e#1162#1163#0" expanded="false" />
+            <element signature="e#1206#1207#0" expanded="false" />
+            <element signature="e#1242#1243#0" expanded="false" />
+            <element signature="e#1275#1276#0" expanded="false" />
+            <element signature="e#1304#1305#0" expanded="false" />
+            <element signature="e#1348#1349#0" expanded="false" />
+            <element signature="e#1384#1385#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/DAOImp/TobaccoDaoImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#632#633#0" expanded="false" />
+            <element signature="e#669#670#0" expanded="false" />
+            <element signature="e#737#738#0" expanded="false" />
+            <element signature="e#789#790#0" expanded="false" />
+            <element signature="e#829#830#0" expanded="false" />
+            <element signature="e#910#911#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/dataBean/upLoadPicBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="e#264#265#0" expanded="false" />
+            <element signature="e#291#292#0" expanded="false" />
+            <element signature="e#331#332#0" expanded="false" />
+            <element signature="e#363#364#0" expanded="false" />
+            <element signature="e#497#498#0" expanded="false" />
+            <element signature="e#524#525#0" expanded="false" />
+            <element signature="e#564#565#0" expanded="false" />
+            <element signature="e#596#597#0" expanded="false" />
+            <element signature="e#637#638#0" expanded="false" />
+            <element signature="e#673#674#0" expanded="false" />
+            <element signature="e#732#733#0" expanded="false" />
+            <element signature="e#782#783#0" expanded="false" />
+            <element signature="e#812#813#0" expanded="false" />
+            <element signature="e#838#839#0" expanded="false" />
+            <element signature="e#876#877#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#941#942#0" expanded="false" />
+            <element signature="e#971#972#0" expanded="false" />
+            <element signature="e#1018#1019#0" expanded="false" />
+            <element signature="e#1056#1057#0" expanded="false" />
+            <element signature="e#1093#1094#0" expanded="false" />
+            <element signature="e#1125#1126#0" expanded="false" />
+            <element signature="e#1176#1177#0" expanded="false" />
+            <element signature="e#1218#1219#0" expanded="false" />
+            <element signature="e#1266#1267#0" expanded="false" />
+            <element signature="e#1302#1303#0" expanded="false" />
+            <element signature="e#1368#1369#0" expanded="false" />
+            <element signature="e#1418#1419#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/serviceImp/CaseServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="859">
+          <caret line="155" column="45" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mark/java/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="157" column="17" selection-start-line="157" selection-start-column="17" selection-end-line="157" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -102,22 +102,27 @@ public class CaseServiceImp implements CaseService {
             resultBean.setMessage("case num is already exited");
             return resultBean;
         }else if(caseInfo!=null&&updateCase){
-                List<tobacco> TobaccosList=TobaccoDaoImp.getTobaccosListByCaseNum(caseInfo.getCaseInfoNum());
-            for(int i=0;i<TobaccosList.size();i++){
-                tobacco tempTobacco=TobaccosList.get(i);
-                String LaserCodeFileName=tempTobacco.getLaserCodeUrl();
-                staticToll.deleteFile(LaserCodeFileName);
-                String [] imgs=tempTobacco.getImagurls().split(";");
-                for(int j=0;j<imgs.length;j++){
-                    String fileName=imgs[j];
-                    staticToll.deleteFile(fileName);
-                }
-            }
+//                List<tobacco> TobaccosList=TobaccoDaoImp.getTobaccosListByCaseNum(caseInfo.getCaseInfoNum());
+//            for(int i=0;i<TobaccosList.size();i++){
+//                tobacco tempTobacco=TobaccosList.get(i);
+//                String LaserCodeFileName=tempTobacco.getLaserCodeUrl();
+//                staticToll.deleteFile(LaserCodeFileName);
+//                String [] imgs=tempTobacco.getImagurls().split(";");
+//                for(int j=0;j<imgs.length;j++){
+//                    String fileName=imgs[j];
+//                    staticToll.deleteFile(fileName);
+//                }
+//            }
             subtime=caseInfo.getSubmit_time();
-            CaseInfoDAOImp.delCaseInfo(caseInfo);
-            caseInfo=null;
+        }else if(caseInfo==null&&updateCase){
+            resultBean.setSuccess(0);
+            resultBean.setMessage("cannot find case with case number");
+            return resultBean;
         }
-          caseInfo =new caseInfo();
+        if(caseInfo==null){
+            caseInfo =new caseInfo();
+        }
+
         Account account=AccountDAOImp.getAccountById(uid);
         department department=departmentDaoImp.getDepartmentById(departmentId);
         if(account==null||department==null){
@@ -125,14 +130,13 @@ public class CaseServiceImp implements CaseService {
             resultBean.setMessage("can not find account or department by id");
             return resultBean;
         }
-        caseInfo.setAccount(account);
-        caseInfo.setDepartment(department);
+
         caseInfo.setTimeStamp(System.currentTimeMillis());
         if(!updateCase)
         {
+            caseInfo.setAccount(account);
+            caseInfo.setDepartment(department);
             caseInfo.setSubmit_time(upLoadPicBean.getDate());
-        }else{
-            caseInfo.setSubmit_time(subtime);
         }
 
         caseInfo.setCaseInfoNum(upLoadPicBean.getNum());
